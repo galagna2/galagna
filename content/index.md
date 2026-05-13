@@ -1,6 +1,17 @@
 ---
-title: Welcome to Quartz
+title: welcome!
 ---
+Hi, that's my [[rhizomatic]] framework for gaining insights horizontally.
 
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+That's what you may find:
+- Process-based therapy ([[PBT]]) related content
+- Open Source and Open Science
+- Group Iterative Multi-Model Estimation ([[GIMME]])
+- [[Psycho-Oncology]]
+- general blogging and PhD mumbling
+
+Hope you enjoy! Please feel free to give me some feedback :)
+giorgio.alagna@gmx.com
+
+Gassho,
+Giorgio
