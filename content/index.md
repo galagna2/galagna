@@ -1,7 +1,7 @@
 ---
 title: welcome!
 ---
-Hi :) This is my [rhizomatic](https://jzhao.xyz/thoughts/rhizomatic-vs-arborescent) framework for gaining insights horizontally or - if you want - process-based, as learning unfolds over time and influences other aspects of my life (Ong & Lee, 2025, p. 11).
+Hi :) This is my [rhizomatic](https://jzhao.xyz/thoughts/rhizomatic-vs-arborescent) framework for gaining insights horizontally or - if you want - process-based, as learning unfolds over time and influences other aspects of my life ([[Ong & Lee, 2025]], p. 11).
 
 Here you may find content mostly related to:
 - Process-based therapy ([[PBT]])
