@@ -7,10 +7,10 @@ That's what you may find:
 - Process-based therapy ([[PBT]]) related content
 - Open Source and Open Science
 - Group Iterative Multi-Model Estimation ([[GIMME]])
-- [[Psycho-Oncology]]
+- (Pediatric) [[Psycho-Oncology]]
 - general blogging and PhD mumbling
 
-Hope you enjoy! Please feel free to give me some feedback :)
+Hope you enjoy! Please, feel free to give me some feedback :)
 giorgio.alagna@gmx.com
 
 Gassho,
