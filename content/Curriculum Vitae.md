@@ -4,7 +4,9 @@ Titledraft: "false"
 tags:
 ---
 Name: Giorgio Alagna
+
 Nationality: Italian
+
 E-mail address: [giorgio.alagna@gmx.com](mailto:giorgio.alagna@gmx.com) | [giorgio.alagna@uni-koeln.de](mailto:giorgio.alagna@uni-koeln.de)
 
 ## Education
