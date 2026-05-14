@@ -6,13 +6,12 @@ export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
   afterBody: [],
-  footer: Component.Footer({
-    links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
-    },
-  }),
-}
+ footer: Component.Footer({
+  text: "© 2026 Giorgio Alagna. All rights reserved.",
+  links: {
+    "GitHub": "https://github.com/galagna2",
+  },
+})
 
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
