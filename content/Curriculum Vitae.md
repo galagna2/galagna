@@ -164,8 +164,6 @@ German – C2 (Goethe-Zertifikat: Großes Deutsches Sprachdiplom)
 
 English – Good
 
-French – Satisfactory
-
 ### Programming languages 
 R – Very good
 
