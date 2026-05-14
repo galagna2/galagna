@@ -3,7 +3,7 @@ title: Psycho-Oncology
 ---
 The World Health Organization ([[WHO]]) estimates that each year worldwide, “400,000 children and adolescents of 0-19 years old develop cancer“. Although many childhood cancers are now effectively treated—with survival rates approaching 80% in high-income countries —cancer remains a significant predisposing factor for long-term psychological distress and mental disorders . These consequences on mental health stem from multiple sources such as long-term side effects of cancer treatment, disruption of age-appropriate developmental tasks (4), and chronic stressors such as fear of cancer recurrence ([[FCR]]), intrusive memories, social isolation, and elevated school absenteeism.
 
-As [Dr. Michael Hoyt](https://publichealth.uci.edu/faculty/hoyt-michael/) puts it: "What's cancer interrupting in the life of young adults? And hwo is it interrupting it?"
+As [Dr. Michael Hoyt](https://publichealth.uci.edu/faculty/hoyt-michael/) puts it: "What's cancer interrupting in the life of young adults? And how is cancer interrupting it?"
 
 In my research, I'm focusing on [[PBT]] and [[ACT]] and their potential role in pediatric psycho-oncology, mostly in adolescent and young adult ([[AYA]]) cancer survivors.
 
