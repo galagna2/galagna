@@ -5,7 +5,7 @@ Hi :) This is my [rhizomatic](https://jzhao.xyz/thoughts/rhizomatic-vs-arboresce
 
 Here you may find content mostly related to:
 - Process-based therapy ([[PBT]])
-- Group Iterative Multi-Model Estimation ([[GIMME]])
+- Perceived Causal Network ([[PECAN]])
 - (Pediatric) [[Psycho-Oncology]]
 - Acceptance- and Commitment Therapy ([[ACT]])
 - blogging and [[PhD]] mumbling.

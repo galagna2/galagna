@@ -3,10 +3,8 @@ created: 2026-06-03
 tags:
   - note
   - journal
-Impact factor:
-Website:
 ---
-In the [[Clinical Article]] I want to work on the first session with [[PECAN]] first and try to understand which [[ACT]] processes the clients are struggling with.
+In the [[Clinical Article]] I want to work on the first session with [[PECAN]] and try to understand which [[ACT]] processes the clients are struggling with.
 
 In order to do that I have to consider [[Vogel 2025a]] and its timeline.
 
@@ -53,8 +51,6 @@ Each node is rated by frequency from 0 to 10. "How often do you feel or behave w
 Rate how sure participants are that a lack of openness affects engagement (0-10)
 ## 5. Evaluation and visualization
 Evaluation can be assessed through centrality measures and feedback loops. Visualization can be made with [PeCaN Tool](https://pecan-tool.rpsychologist.com/network) or with the R-Packages ([[PECAN r packages]])
-
-![[Screenshot 2026-06-12 at 12.23.49.png]]
 
 | Node              | Out-degree Cen. | In-Degree Cen. | Rel. Out-Impact | Rel. Vulnerability |
 | :---------------- | --------------: | -------------: | --------------: | -----------------: |
