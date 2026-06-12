@@ -8,7 +8,7 @@ In the [[Clinical Article]] I want to work on the first session with [[PECAN]] a
 
 In order to do that I have to consider [[Vogel 2025a]] and its timeline.
 
-The most important difference is the differentiation between symptom and process of change. The patients had to assess how certain they were that the node causally affected each of the other nodes with a VAS. [PECAN Survey Lavefjord 2025.docx](file:///Users/giorgioalagna/Desktop/PECAN-CA/PECAN%20Survey%20Lavefjord%202025.docx)
+The most important difference is the differentiation between symptom and process of change. The patients had to assess how certain they were that the node causally affected each of the other nodes with a VAS. 
 
 Considering the categories of [[Vogel 2025b]], [[Lavefjord 2025a]] used:
 - as node property, modifiability
@@ -35,11 +35,11 @@ Which other categories could I choose from?
 **Counterfactuals**: If you no longer talked to your mother, would you still feel sad?
 # Session 0
 ## 0. Materials
-[visual_aids_PECAN-ACT.pdf](file:///Users/giorgioalagna/Desktop/PECAN-CA/visual_aids_PECAN-ACT.pdf)
-[Dokumentationsbogen_PECAN-ACT.docx](file:///Users/giorgioalagna/Desktop/PECAN-CA/Dokumentationsbogen_PECAN-ACT.docx)
-[PECAN-ACT_Network_Calculator_R.xlsx](file:///Users/giorgioalagna/Desktop/PECAN-CA/PECAN-ACT_R/PECAN-ACT_Network_Calculator_R.xlsx)
-[PECAN2.R](file:///Users/giorgioalagna/Desktop/PECAN-CA/PECAN-ACT_R/PECAN2.R)
-[PECAN-ACT_Network_Calculator](file:///Users/giorgioalagna/Desktop/PECAN-CA/PECAN-ACT_R/PECAN2.R)
+[visual_aids_PECAN-ACT.pdf]
+[Dokumentationsbogen_PECAN-ACT.docx]
+[PECAN-ACT_Network_Calculator_R.xlsx]
+[PECAN2.R]
+[PECAN-ACT_Network_Calculator]
 ## 1. psychoeducation
 Here I want to explain to adolescents what the three triflex processes are
 [[Psychoedukation zu ACT-Triflex]]
