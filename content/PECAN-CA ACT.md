@@ -26,28 +26,32 @@ I'll use as **node properties**:
 - Controllability
 
 and in order to assess **edges**: 
-
 ==**Certainty**: Do you think your sadness is caused by talking to your mother?==
 
 **Frequency**: How often do you feel sad, if you talked to your mother?
  
- **Counterfactuals**: If you no longer talked to your mother, would you still feel sad?
+**Counterfactuals**: If you no longer talked to your mother, would you still feel sad?
+
 
 The research question will be: Is there a benefit to start ACT with the most central node? 
 # Session 0: Assess PECAN and Node Centrality
+
 ## 0. Materials
-[visual_aids_PECAN-ACT.pdf]
-[Dokumentationsbogen_PECAN-ACT.docx]
-[PECAN-ACT_Network_Calculator_R.xlsx]
-[PECAN2.R]
-[PECAN-ACT_Network_Calculator]
+The following materials can be found in the [OSF Project](https://osf.io/2cj6g/overview?view_only=d462e8aab7a344fa93ba019c7ff445ca):
+- Design of the visual aids (visual_aids_PECAN-ACT.pdf)
+- Semi-structured interview in German - English version is on the way (Dokumentationsbogen_PECAN-ACT.docx)
+- Raw data for R to calculate the Network (PECAN-ACT_Network_Calculator_R.xlsx)
+- R-script for PECAN2 (PECAN2.R)
+- Excel table to assess centrality (PECAN-ACT_Network_Calculator)
+
+![[STEPS PECAN_CA-ACT.png]]
 ## 1. psychoeducation
-Here I want to explain to adolescents what the  triflex processes are
-[[Psychoedukation zu ACT-Triflex]]
+Here I want to explain to adolescents what the triflex processes are
+[[Psychoedukation zu ACT-Triflex]] (GER)
 ## 2. clarification of processes 
 Discuss every card to check what the patients understand under the processes after the psychoeducation. Try to explore at least an example for every process.
 ## 3 frequency evaluation
-Each node is rated by frequency from 0 to 10. "How often do you feel or behave with openness?"
+Each node is rated by frequency from 0 to 10. "How often do you feel open or behave with openness?"
 ## 4. causal nodes evaluation
 Rate how sure participants are that a lack of openness affects engagement (0-10)
 ## 5. Evaluation and visualization
@@ -60,10 +64,10 @@ Evaluation can be assessed through centrality measures and feedback loops. Visua
 | Life Satisfaction |              16 |             20 |           0.198 |              0.247 |
 | Openness          |              27 |             20 |           0.333 |              0.247 |
 
-Out-degree Centrality: how much a node drives the network
-In-degree Centrality: how much a node is driven by the network
-Relative Out-Impact: How much a node (Openness) accounts for the total energy of the network (33.3%)
-Relative Vulnerability: How much a node absorbs the energy of the network
+- Out-degree Centrality: how much a node drives the network
+- In-degree Centrality: how much a node is driven by the network
+- Relative Out-Impact: How much a node (Openness) accounts for the total energy of the network (33.3%)
+- Relative Vulnerability: How much a node absorbs the energy of the network
 
 **Out-degree Centrality** determines the process to start with in therapy since if the node that drives the network the most gets treated, the whole network gets disturbed the most.
 # Session 1-8
