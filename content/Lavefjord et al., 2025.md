@@ -1,5 +1,5 @@
 ---
-title: Testing the network centrality hypothesis within process-based acceptance and commitment therapy – A single case experiment utilizing perceived causal networks
+title: Lavefjord et al., 2025
 source: https://www.sciencedirect.com/science/article/pii/S2212144726000244?via%3Dihub
 author:
   - "[[Amani Lavefjord]]"
@@ -9,6 +9,7 @@ description:
 tags:
   - clippings
 ---
+**Title**: Testing the network centrality hypothesis within process-based acceptance and commitment therapy – A single case experiment utilizing perceived causal networks
 
 Network analysis needs intensive longitudinal data. One can use baseline data to achieve that. One can also use [[PECAN]]: self-reports about how other variables influence the others. 
 

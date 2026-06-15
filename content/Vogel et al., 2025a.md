@@ -1,5 +1,5 @@
 ---
-title: "An Adaptation of Perceived Causal Networks for Children and Adolescents (PECAN-CA): An Evaluation of its Reliability and Feasibility - Child Psychiatry & Human Development"
+title: Vogel et al., 2025a
 source: https://link.springer.com/article/10.1007/s10578-025-01900-9#Sec24
 author:
   - Vogel F.
@@ -9,6 +9,8 @@ description:
 tags:
   - clippings
 ---
+**Title**: An Adaptation of Perceived Causal Networks for Children and Adolescents (PECAN-CA): An Evaluation of its Reliability and Feasibility - Child Psychiatry & Human Development
+
 [[PECAN]] should be used as a decision making process for therapy personalization. It gives the possibility to quantify the centrality and other quantitaive measures of the importance of a symptom and other symptoms. 
 It has advantages against the statistical methods since it is not that time consuming and derives percieved causal networks. 
 [[PECAN]] should be delivered to adolescents through intake interviews, as it's more reliable.

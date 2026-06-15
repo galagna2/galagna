@@ -27,8 +27,8 @@ I'll use as **node properties**:
 
 and in order to assess **edges**: 
 ==**Certainty**: Do you think your sadness is caused by talking to your mother?==
-**Frequency**: How often do you feel sad, if you talked to your mother?
-**Counterfactuals**: If you no longer talked to your mother, would you still feel sad?
+ **Frequency**: How often do you feel sad, if you talked to your mother?
+ **Counterfactuals**: If you no longer talked to your mother, would you still feel sad?
 
 In the end the research question will be: Is there a benefit to start ACT with the most central node? 
 # Session 0: Assess PECAN and Node Centrality
@@ -56,8 +56,9 @@ Evaluation can be assessed through centrality measures and feedback loops. Visua
 | Engagement        |              17 |             21 |           0.210 |              0.259 |
 | Life Satisfaction |              16 |             20 |           0.198 |              0.247 |
 | Openness          |              27 |             20 |           0.333 |              0.247 |
-Out-degree Cen: how much a node drives the network
-In-degree Cen: how much a node is driven by the network
+
+Out-degree Centrality: how much a node drives the network
+In-degree Centrality: how much a node is driven by the network
 Relative Out-Impact: How much a node (Openness) accounts for the total energy of the network (33.3%)
 Relative Vulnerability: How much a node absorbs the energy of the network
 

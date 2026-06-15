@@ -1,5 +1,5 @@
 ---
-title: "How perceived causal networks can complement case conceptualization, diagnostic classification, and data-based networks: An introduction to a method for constructing personalized networks."
+title: Vogel et al., 2025b
 source: https://psycnet.apa.org/record/2026-51851-001
 author:
   - Vogel F.
@@ -9,7 +9,7 @@ description:
 tags:
   - clippings
 ---
-
+**Title**: How perceived causal networks can complement case conceptualization, diagnostic classification, and data-based networks: An introduction to a method for constructing personalized networks.
 # Guidelines to use PECAN
 Definition of PECAN:
 1)  An idiographic model of an individual’s psychopathology of their perceived causal relations (PCR) between the nodes in a system. This model entails:
