@@ -19,18 +19,20 @@ Considering the categories of [[Vogel et al., 2025b]], [[Lavefjord et al., 2025]
 			-Example: Difficult thoughts or feelings that govern you, in turn distract you in everyday life.
 			-Example: Difficult thoughts or feelings that govern you, leads to tunnel vision/difficulties getting perspective on things.
 
-I'll use as **node properties**: 
-- **Frequency**
-- (Severity)
-- (Modifiability)
-- (Controllability)
 
-and in order to assess **edges**: 
-**Certainty: Do you think your sadness is caused by talking to your mother?**
-(Frequency: How often do you feel sad, if you talked to your mother?)
-(Counterfactuals: If you no longer talked to your mother, would you still feel sad?)
 
-The research question will be: Is there a benefit to start ACT with the most central node? 
+I'll use as **node properties**:
+- ==frequency==
+- severity
+- modifiability
+- controllability
+
+To assess edges, I'll use:
+- ==certainty==: "Do you think your sadness is caused by talking to your mother?"
+- frequency: "How often do you fell sad, when you talked to your mother?"
+- counterfactuals: "If you no longer talked to your mother, would you still feel sad?"
+
+The research question will be: Is there a benefit to start ACT with the most central node?
 # Session 0: Assess PECAN and Node Centrality
 
 ## 0. Materials
