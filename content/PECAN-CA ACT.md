@@ -26,11 +26,14 @@ I'll use as **node properties**:
 - Controllability
 
 and in order to assess **edges**: 
+
 ==**Certainty**: Do you think your sadness is caused by talking to your mother?==
- **Frequency**: How often do you feel sad, if you talked to your mother?
+
+**Frequency**: How often do you feel sad, if you talked to your mother?
+ 
  **Counterfactuals**: If you no longer talked to your mother, would you still feel sad?
 
-In the end the research question will be: Is there a benefit to start ACT with the most central node? 
+The research question will be: Is there a benefit to start ACT with the most central node? 
 # Session 0: Assess PECAN and Node Centrality
 ## 0. Materials
 [visual_aids_PECAN-ACT.pdf]
