@@ -43,6 +43,8 @@ The following materials can be found in the [OSF Project](https://osf.io/2cj6g/o
 - R-script for PECAN2 (PECAN2.R)
 - Excel table to assess centrality (PECAN-ACT_Network_Calculator)
 
+An example of an interview with an adolescent (Marie) can be found in this video: https://www.youtube.com/watch?v=RvC3WEW9BRM
+
 ![[STEPS PECAN_CA-ACT.png]]
 ## 1. psychoeducation
 Here I want to explain to adolescents what the triflex processes are
@@ -54,14 +56,19 @@ Each node is rated by frequency from 0 to 10. "How often do you feel open or beh
 ## 4. causal nodes evaluation
 Rate how sure participants are that a lack of openness affects engagement (0-10)
 ## 5. Evaluation and visualization
-Evaluation can be assessed through centrality measures and feedback loops. Visualization can be assured with the R-Package [[PECAN2]]
+Evaluation can be assessed through centrality measures and feedback loops. Visualization can be assured with the R-Package [[PECAN2]]![[Screenshot 2026-06-16 at 14.09.48.png]]
+Perceived Causal Network of Marie (Video): 
+- The size of the nodes (red) describes the frequency of behavior (Engagement is tinier, as Marie feels disoriented and doesn't know what's important in her life)
+- The color of the edges describes the certainty (Lack of Life satisfaction certainly influences awareness)
+![[Screenshot 2026-06-16 at 14.08.44.png]]
+Simplified Perceived Causal Network of Marie (Video)
 
 | Node              | Out-degree Cen. | In-Degree Cen. | Rel. Out-Impact | Rel. Vulnerability |
 | :---------------- | --------------: | -------------: | --------------: | -----------------: |
-| Awareness         |              21 |             20 |           0.259 |              0.247 |
-| Engagement        |              17 |             21 |           0.210 |              0.259 |
-| Life Satisfaction |              16 |             20 |           0.198 |              0.247 |
-| Openness          |              27 |             20 |           0.333 |              0.247 |
+| Awareness         |              20 |             27 |           0.206 |              0.278 |
+| Engagement        |              23 |             24 |           0.237 |              0.247 |
+| Life Satisfaction |              27 |             23 |           0.278 |              0.237 |
+| Openness          |              27 |             23 |           0.278 |              0.237 |
 
 - Out-degree Centrality: how much a node drives the network
 - In-degree Centrality: how much a node is driven by the network
@@ -69,6 +76,8 @@ Evaluation can be assessed through centrality measures and feedback loops. Visua
 - Relative Vulnerability: How much a node absorbs the energy of the network
 
 **Out-degree Centrality** determines the process to start with in therapy since if the node that drives the network the most gets treated, the whole network gets disturbed the most.
+
+The Most Central Node Intervention (MCNI) of Marie would be Openness, whereas the Least Central Node Intervention (LCNI) of Marie would be Awareness.
 # Session 1-8
 ACT protocol with 12 sessions. 4 sessions/triflex process.
 [[ACT protocol PECAN-CA]]
