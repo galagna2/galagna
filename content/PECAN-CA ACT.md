@@ -56,12 +56,16 @@ Each node is rated by frequency from 0 to 10. "How often do you feel open or beh
 ## 4. causal nodes evaluation
 Rate how sure participants are that a lack of openness affects engagement (0-10)
 ## 5. Evaluation and visualization
-Evaluation can be assessed through centrality measures and feedback loops. Visualization can be assured with the R-Package [[PECAN2]]![[Screenshot 2026-06-16 at 14.09.48.png]]
-Perceived Causal Network of Marie (Video): 
+Evaluation can be assessed through centrality measures and feedback loops. Visualization can be assured with the R-Package [[PECAN2]]
+
+**Perceived Causal Network of Marie (Video):** 
 - The size of the nodes (red) describes the frequency of behavior (Engagement is tinier, as Marie feels disoriented and doesn't know what's important in her life)
 - The color of the edges describes the certainty (Lack of Life satisfaction certainly influences awareness)
-![[Screenshot 2026-06-16 at 14.08.44.png]]
-Simplified Perceived Causal Network of Marie (Video)
+![[Screenshot 2026-06-16 at 14.09.48.png|430]]
+
+**Simplified Perceived Causal Network of Marie (Video)**
+![[Screenshot 2026-06-16 at 14.08.44.png|488]]
+
 
 | Node              | Out-degree Cen. | In-Degree Cen. | Rel. Out-Impact | Rel. Vulnerability |
 | :---------------- | --------------: | -------------: | --------------: | -----------------: |
