@@ -82,6 +82,8 @@ Evaluation can be assessed through centrality measures and feedback loops. Visua
 **Out-degree Centrality** determines the process to start with in therapy since if the node that drives the network the most gets treated, the whole network gets disturbed the most.
 
 The Most Central Node Intervention (MCNI) of Marie would be Openness, whereas the Least Central Node Intervention (LCNI) of Marie would be Awareness.
+
+In the SCED, there will be a baseline, than a MCNI Phase and a LCNI Phase. The order of MCNI and LCNI will be randomized in order to assess if individuals starting with MCNI have a faster progression in [[psychological flexibility]].
 # Session 1-8
 ACT protocol with 12 sessions. 4 sessions/triflex process.
 [[ACT protocol PECAN-CA]]
