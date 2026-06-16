@@ -43,7 +43,7 @@ The following materials can be found in the [OSF Project](https://osf.io/2cj6g/o
 - R-script for PECAN2 (PECAN2.R)
 - Excel table to assess centrality (PECAN-ACT_Network_Calculator)
 
-An example of an interview with an adolescent (Marie) can be found in this video: https://www.youtube.com/watch?v=RvC3WEW9BRM
+An example of an interview with an adolescent (Marie) can be found in this video: https://www.youtube.com/watch?v=RvC3WEW9BRM (with english subtitles)
 
 ![[STEPS PECAN_CA-ACT.png]]
 ## 1. psychoeducation
@@ -76,7 +76,7 @@ Evaluation can be assessed through centrality measures and feedback loops. Visua
 
 - Out-degree Centrality: how much a node drives the network
 - In-degree Centrality: how much a node is driven by the network
-- Relative Out-Impact: How much a node (Openness) accounts for the total energy of the network (33.3%)
+- Relative Out-Impact: How much a node (Openness) accounts for the total energy of the network (27.8%)
 - Relative Vulnerability: How much a node absorbs the energy of the network
 
 **Out-degree Centrality** determines the process to start with in therapy since if the node that drives the network the most gets treated, the whole network gets disturbed the most.
