@@ -53,6 +53,9 @@ Is there any part of this paragraph (e.g., the explanation of [[PECAN]] or the h
 ## 0. Materials
 The following materials can be found in the [OSF Project](https://osf.io/2cj6g/overview?view_only=d462e8aab7a344fa93ba019c7ff445ca):
 - Design of the visual aids (visual_aids_PECAN-ACT.pdf)
+
+![[PECAN-ACT Obsidian copy.png]]
+![[PECAN-ACT Obsidian.png|688]]
 - Semi-structured interview in German - English version is on the way (Dokumentationsbogen_PECAN-ACT.docx)
 - Raw data for R to calculate the Network (PECAN-ACT_Network_Calculator_R.xlsx)
 - R-script for PECAN2 (PECAN2.R)
