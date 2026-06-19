@@ -20,8 +20,6 @@ Considering the categories of [[Vogel et al., 2025b]], [[Lavefjord et al., 2025]
 			-Example: Difficult thoughts or feelings that govern you, in turn distract you in everyday life.
 			-Example: Difficult thoughts or feelings that govern you, leads to tunnel vision/difficulties getting perspective on things.
 
-
-
 I'll use as **node properties**:
 - ==frequency==
 - severity
@@ -41,6 +39,7 @@ Many [[ACT]] protocols start with a process of the hexaflex independently of the
 One way to assess which process should be targeted with an individual in a specific situation could be to assess its centrality. As data‑driven networks based on extensive longitudinal data require many repeated measurements (which is even more difficult with children and adolescents), a good alternative could be the perceived causal network approach, or [[PECAN]].
 
 With this method, we can assess within one session which ACT‑Triflex process is most central and try to test the centrality hypothesis in adolescents. This could help [[ACT]] practitioners decide which process they should start with, enabling a more personalized and hopefully more effective therapy.
+![[477482_1_En_1_Fig6_HTML.png|503]]
 
 In this study, I will assess [[PECAN]] in session 0 with an interview adapted from [[Vogel et al., 2025a]]. After the interview, the Most Central Node Intervention (MCNI) and Least Central Node Intervention (LCNI) are identified. In a SCED, individuals are randomized after the baseline phase to receive first MCNI and then LCNI, or vice versa.
 
