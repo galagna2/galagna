@@ -64,6 +64,7 @@ The following materials can be found in the [OSF Project](https://osf.io/2cj6g/o
 
 An example of an interview with an adolescent (Marie) can be found in this video: https://www.youtube.com/watch?v=RvC3WEW9BRM (with english subtitles)
 
+**Outline of session 0**
 ![[STEPS PECAN_CA-ACT.png]]
 ## 1. psychoeducation
 Here I want to explain to adolescents what the triflex processes are
