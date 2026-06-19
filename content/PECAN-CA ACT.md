@@ -3,6 +3,7 @@ created: 2026-06-03
 tags:
   - PBT
 ---
+# Premise
 I want to replicate the study of [[Lavefjord et al., 2025]] with adolescents. [[Vogel et al., 2025a]] have developed a semi-standardized interview to assess [[PECAN]] with children and adolescents (12-18), but only using symptoms and network model of psychopathology.
 
 The most important difference is the differentiation between symptom and process of change. In the study of [[Lavefjord et al., 2025]], the clients had to assess how certain they were that the node causally affected each of the other nodes with a VAS. 
@@ -32,7 +33,22 @@ To assess edges, I'll use:
 - frequency: "How often do you fell sad, when you talked to your mother?"
 - counterfactuals: "If you no longer talked to your mother, would you still feel sad?"
 
-The research question will be: Is there a benefit to start ACT with the most central node?
+# Introduction
+Many [[ACT]] protocols start with a process of the hexaflex independently of the individual receiving therapy. However, the [[PBT]] golden rule says:  
+
+> What core biopsychosocial processes should be targeted with this client given this goal in this situation, and how can they most efficiently and effectively be changed? (Hofmann & Hayes, 2019)
+
+One way to assess which process should be targeted with an individual in a specific situation could be to assess its centrality. As data‑driven networks based on extensive longitudinal data require many repeated measurements (which is even more difficult with children and adolescents), a good alternative could be the perceived causal network approach, or [[PECAN]].
+
+With this method, we can assess within one session which ACT‑Triflex process is most central and try to test the centrality hypothesis in adolescents. This could help [[ACT]] practitioners decide which process they should start with, enabling a more personalized and hopefully more effective therapy.
+
+In this study, I will assess [[PECAN]] in session 0 with an interview adapted from [[Vogel et al., 2025a]]. After the interview, the Most Central Node Intervention (MCNI) and Least Central Node Intervention (LCNI) are identified. In a SCED, individuals are randomized after the baseline phase to receive first MCNI and then LCNI, or vice versa.
+
+Hypotheses:  
+H1: Individuals receiving MCNI before LCNI will show outcome improvements during MCNI and no additional significant improvements during LCNI.  
+H2: Individuals receiving LCNI before MCNI will show outcome improvements during LCNI and additional significant improvements during MCNI.
+
+Is there any part of this paragraph (e.g., the explanation of [[PECAN]] or the hypotheses) that you would like to make more formal or more concise for a specific journal or audience?
 # Session 0: Assess PECAN and Node Centrality
 
 ## 0. Materials
