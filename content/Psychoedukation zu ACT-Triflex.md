@@ -1,4 +1,4 @@
-[[PECAN-CA + ACT]]
+[[PECAN-CA ACT]]
 
 **Video 1: Prozesse der Psychopathologie** [[Storyboard Prozesse der Psychopathologie]]
 
