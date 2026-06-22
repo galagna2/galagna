@@ -65,7 +65,7 @@ The following materials can be found in the [OSF Project](https://osf.io/2cj6g/o
 
 **"Dance floor"**
 
-![[Screenshot 2026-06-22 at 13.45.15.png|493]]
+![[Screenshot 2026-06-22 at 13.45.15.png|601]]
 
 
 An example of an interview with a fictive patient (Marie) can be found in this video: https://www.youtube.com/watch?v=RvC3WEW9BRM (with english subtitles; role play; version alpha)
