@@ -54,33 +54,36 @@ Is there any part of this paragraph (e.g., the explanation of [[PECAN]] or the h
 ## 0. Materials
 The following materials can be found in the [OSF Project](https://osf.io/2cj6g/overview?view_only=d462e8aab7a344fa93ba019c7ff445ca):
 - Design of the visual aids (visual_aids_PECAN-ACT.pdf)
-
-![[PECAN-ACT Obsidian copy.png]]
-![[PECAN-ACT Obsidian.png|688]]
 - Semi-structured interview in German - English version is on the way (Dokumentationsbogen_PECAN-ACT.docx)
 - Raw data for R to calculate the Network (PECAN-ACT_Network_Calculator_R.xlsx)
 - R-script for PECAN2 (PECAN2.R)
 - Excel table to assess centrality (PECAN-ACT_Network_Calculator)
 
-An example of an interview with an adolescent (Marie) can be found in this video: https://www.youtube.com/watch?v=RvC3WEW9BRM (with english subtitles)
+**Process Cards**
+![[Screenshot 2026-06-22 at 13.44.55.png|305]]
+
+**"Dance floor"**
+![[Screenshot 2026-06-22 at 13.45.15.png|335]]
+
+
+An example of an interview with a fictive patient (Marie) can be found in this video: https://www.youtube.com/watch?v=RvC3WEW9BRM (with english subtitles; role play; version alpha)
 
 **Outline of session 0**
 ![[STEPS PECAN_CA-ACT.png]]
 ## 1. psychoeducation
 Here I want to explain to adolescents what the triflex processes are
-[[Psychoedukation zu ACT-Triflex]] (GER)
 ## 2. clarification of processes 
 Discuss every card to check what the patients understand under the processes after the psychoeducation. Try to explore at least an example for every process.
 ## 3 frequency evaluation
 Each node is rated by frequency from 0 to 10. "How often do you feel open or behave with openness?"
 ## 4. causal nodes evaluation
-Rate how sure participants are that a lack of openness affects engagement (0-10)
+Rate how sure participants are sure that a lack of openness affects engagement (0-10)
 ## 5. Evaluation and visualization
 Evaluation can be assessed through centrality measures and feedback loops. Visualization can be assured with the R-Package [[PECAN2]]
 
 **Perceived Causal Network of Marie (Video):** 
 - The size of the nodes (red) describes the frequency of behavior (Engagement is tinier, as Marie feels disoriented and doesn't know what's important in her life)
-- The color of the edges describes the certainty (Lack of Life satisfaction certainly influences awareness)
+- The color of the edges describes the perceived certainty (Lack of Life satisfaction certainly influences awareness)
 ![[Screenshot 2026-06-16 at 14.09.48.png|430]]
 
 **Simplified Perceived Causal Network of Marie (Video)**
