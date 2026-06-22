@@ -60,9 +60,11 @@ The following materials can be found in the [OSF Project](https://osf.io/2cj6g/o
 - Excel table to assess centrality (PECAN-ACT_Network_Calculator)
 
 **Process Cards**
-![[Screenshot 2026-06-22 at 13.44.55.png|305]]
+
+![[Screenshot 2026-06-22 at 13.44.55.png|371]]
 
 **"Dance floor"**
+
 ![[Screenshot 2026-06-22 at 13.45.15.png|335]]
 
 
