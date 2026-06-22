@@ -48,7 +48,6 @@ Hypotheses:
 H1: Individuals receiving MCNI before LCNI will show outcome improvements during MCNI and no additional significant improvements during LCNI.  
 H2: Individuals receiving LCNI before MCNI will show outcome improvements during LCNI and additional significant improvements during MCNI.
 
-Is there any part of this paragraph (e.g., the explanation of [[PECAN]] or the hypotheses) that you would like to make more formal or more concise for a specific journal or audience?
 # Session 0: Assess PECAN and Node Centrality
 
 ## 0. Materials
