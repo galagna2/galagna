@@ -60,11 +60,11 @@ The following materials can be found in the [OSF Project](https://osf.io/2cj6g/o
 
 **Process Cards**
 
-![[Screenshot 2026-06-22 at 13.44.55.png|371]]
+![[Screenshot 2026-06-23 at 10.49.51.png]]
 
 **"Dance floor"**
 
-![[Screenshot 2026-06-22 at 13.45.15.png|601]]
+![[Screenshot 2026-06-23 at 10.51.00.png]]
 
 
 An example of an interview with a fictive patient (Marie) can be found in this video: https://www.youtube.com/watch?v=RvC3WEW9BRM (with english subtitles; role play; version alpha)
