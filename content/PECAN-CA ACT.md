@@ -76,7 +76,7 @@ Here I want to explain to adolescents what the triflex processes are
 ## 2. clarification of processes 
 Discuss every card to check what the patients understand under the processes after the psychoeducation. Try to explore at least an example for every process.
 ## 3 frequency evaluation
-Each node is rated by frequency from 0 to 10. "How often do you feel open or behave with openness?"
+Each node is rated by frequency from 0 to 10. "How often do you feel open or behave with openness?"›
 ## 4. causal nodes evaluation
 Rate how sure participants are sure that a lack of openness affects engagement (0-10)
 ## 5. Evaluation and visualization
