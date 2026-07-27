@@ -27,9 +27,10 @@ I'll use as **node properties**:
 - controllability
 
 To assess edges, I'll use:
-- ==certainty==: "Do you think your sadness is caused by talking to your mother?"
+- certainty: "Do you think your sadness is caused by talking to your mother?"
 - frequency: "How often do you fell sad, when you talked to your mother?"
 - counterfactuals: "If you no longer talked to your mother, would you still feel sad?"
+- ==strength: "How strongly does your mother influence your sadness?"==
 
 # Introduction
 Many [[ACT]] protocols start with a process of the hexaflex independently of the individual receiving therapy. However, the [[PBT]] golden rule says:  
@@ -59,13 +60,10 @@ The following materials can be found in the [OSF Project](https://osf.io/2cj6g/o
 - Excel table to assess centrality (PECAN-ACT_Network_Calculator)
 
 **Process Cards**
-
-![[Screenshot 2026-06-23 at 10.49.51.png]]
+![[Screenshot 2026-07-27 at 12.07.17.png]]
 
 **"Dance floor"**
-
-![[Screenshot 2026-06-23 at 10.51.00.png]]
-
+![[Screenshot 2026-07-27 at 12.08.31.png]]
 
 An example of an interview with a fictive patient (Marie) can be found in this video: https://www.youtube.com/watch?v=RvC3WEW9BRM (with english subtitles; role play; version alpha)
 
