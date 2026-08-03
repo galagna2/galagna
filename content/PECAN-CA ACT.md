@@ -82,7 +82,7 @@ Evaluation can be assessed through centrality measures and feedback loops. Visua
 
 **Perceived Causal Network of Marie (Video):** 
 - The size of the nodes (red) describes the frequency of behavior (Engagement is tinier, as Marie feels disoriented and doesn't know what's important in her life)
-- The color of the edges describes the perceived certainty (Lack of Life satisfaction certainly influences awareness)
+- The color of the edges describes the perceived certainty (Lack of Openness strongly influences  awareness)
 ![[Screenshot 2026-06-16 at 14.09.48.png|430]]
 
 **Simplified Perceived Causal Network of Marie (Video)**

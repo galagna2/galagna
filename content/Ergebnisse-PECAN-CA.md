@@ -1,0 +1,1 @@
+Hier werden sie über die Ergebnisse unserer Studie informiert! Leider dauert es noch ein bisschen... Danke für Ihr Interesse und Ihre Geduld.
