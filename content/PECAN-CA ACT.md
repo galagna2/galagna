@@ -109,3 +109,5 @@ In the SCED, there will be a baseline, than a MCNI Phase and a LCNI Phase. The o
 # Session 1-8
 ACT protocol with 12 sessions. 4 sessions/triflex process.
 [[ACT protocol PECAN-CA]]
+
+<iframe src="/static/pecan.html" style="width:100%;height:800px;border:0">
