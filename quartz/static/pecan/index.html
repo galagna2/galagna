@@ -61,6 +61,9 @@ p{margin:0}
   color:var(--ink-3); margin:0 0 .45rem
 }
 .lede{color:var(--ink-2); font-size:1.02rem}
+.byline{font-size:.82rem; color:var(--ink-3); margin-top:.35rem}
+.byline a{color:var(--accent); text-decoration:none; border-bottom:1px solid transparent}
+.byline a:hover{border-bottom-color:currentColor}
 .muted{color:var(--ink-3); font-size:.85rem; line-height:1.5}
 
 /* ---------- header + progress ---------- */
@@ -209,6 +212,33 @@ svg.net{display:block; width:100%; height:auto; max-width:100%}
 .rank-bar span{display:block; height:6px; border-radius:3px; background:var(--c)}
 .rank-sub{font-size:.78rem; color:var(--ink-3); font-variant-numeric:tabular-nums}
 .rank.outcome{border-left-style:dashed; margin-top:.25rem}
+
+.segmented{
+  display:flex; gap:.25rem; background:var(--surface-2); border:1px solid var(--rule);
+  border-radius:9px; padding:.22rem
+}
+.segmented button{
+  flex:1; font-size:.8rem; font-weight:600; padding:.45rem .4rem; border-radius:7px;
+  background:transparent; color:var(--ink-3); border:0; line-height:1.3
+}
+.segmented button.on{background:var(--surface); color:var(--ink); box-shadow:var(--shadow)}
+
+.metrics{display:grid; grid-template-columns:repeat(auto-fit,minmax(4.1rem,1fr)); gap:.3rem}
+.metric{
+  background:var(--surface-2); border-radius:7px; padding:.4rem .45rem; min-width:0;
+  border:1.5px solid transparent
+}
+.metric.active{border-color:var(--c); background:var(--surface)}
+.metric .mk{
+  display:block; font-size:.58rem; letter-spacing:.05em; text-transform:uppercase;
+  color:var(--ink-3); font-weight:600; line-height:1.3; white-space:nowrap;
+  overflow:hidden; text-overflow:ellipsis
+}
+.metric .mv{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.95rem; font-weight:500;
+  color:var(--ink); font-variant-numeric:tabular-nums
+}
+.metric.active .mv{color:var(--c)}
 .rank-name .role{margin-left:.15rem}
 .q .label .role{vertical-align:middle}
 .loops{display:flex; flex-direction:column; gap:.5rem}
@@ -251,6 +281,7 @@ svg.net{display:block; width:100%; height:auto; max-width:100%}
   <header>
     <p class="eyebrow">PECAN-CA ACT · Universität zu Köln</p>
     <h1>Dein Prozessnetzwerk</h1>
+    <p class="byline">Giorgio Alagna · <a href="mailto:giorgio.alagna@uni-koeln.de">giorgio.alagna@uni-koeln.de</a></p>
     <ul class="steps" id="steps" aria-hidden="true">
       <li></li><li></li><li></li><li></li>
     </ul>
@@ -322,9 +353,14 @@ svg.net{display:block; width:100%; height:auto; max-width:100%}
 
       <div class="stack-tight">
         <h3>Wie stark treibt jeder Prozess das Netzwerk?</h3>
+        <div class="segmented" id="metricswitch" role="group" aria-label="Nach welchem Maß sortiert wird">
+          <button type="button" data-metric="sevwod" class="on">Severity-gewichtet</button>
+          <button type="button" data-metric="out">Out-Zentralität</button>
+        </div>
         <div class="ranking" id="ranking"></div>
       </div>
-      <p class="muted">Die große Zahl ist die <strong>Out-Zentralität</strong>: die Summe dessen, was dieser Prozess auf die anderen zwei und auf die Lebensqualität ausübt. Darunter steht, wie stark er umgekehrt selbst getrieben wird (<strong>In-Zentralität</strong>). Die Lebensqualität hat keine Out-Zentralität — sie ist als Ergebnis modelliert und wirkt per Definition auf nichts zurück.</p>
+      <p class="muted"><strong>Out</strong> — Summe der ausgehenden Kanten (klassische Out-Zentralität). <strong>In</strong> — Summe der eingehenden Kanten. <strong>Belastung</strong> — der Mangel an diesem Prozess, berechnet als 11 minus Häufigkeit: Was selten vorkommt, belastet stark. <strong>Sev-gew.</strong> — severity-weighted Outdegree plus eigene Belastung (<em>sevwod_combined</em> nach PECAN2): Jede ausgehende Kante zählt mit dem Anteil, den sie am Zufluss des Zielknotens hat, multipliziert mit dessen Belastung. Ein Prozess bekommt also genau den Teil der fremden Belastung zugerechnet, den er verursacht — plus seine eigene.</p>
+      <p class="muted">Die Lebensqualität hat naturgemäß weder Out- noch Sev-gew.-Wert: Sie ist als Ergebnis modelliert und wirkt auf nichts zurück.</p>
 
       <div id="loopwrap"></div>
 
@@ -407,6 +443,7 @@ function blank(){
 }
 let state = blank();
 let step = 0;
+let rankMetric = "sevwod";   // "sevwod" | "out"
 
 function save(){ try { localStorage.setItem(STORE, JSON.stringify(state)); } catch(e){} }
 function load(){
@@ -427,6 +464,7 @@ const $ = s => document.querySelector(s);
 const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim() || "#888";
 const f1 = v => Math.round(v * 10) / 10;
 const pct = v => (v * 100).toFixed(1).replace(".", ",") + " %";
+const num1 = v => v.toFixed(1).replace(".", ",");
 const list = a => a.length < 2 ? (a[0] || "") : a.slice(0,-1).join(", ") + " und " + a[a.length-1];
 function el(tag, attrs, html){
   const e = document.createElement(tag);
@@ -509,19 +547,42 @@ function metrics(){
   const out = {}, inn = {}; let total = 0;
   IDS.forEach(a => { out[a] = 0; inn[a] = 0; });
   eachEdge((a,b,w) => { out[a] += w; inn[b] += w; total += w; });
+
+  /* Belastung als Severity-Analogon: unsere Knoten sind POSITIVE Prozesse,
+     eine hohe Häufigkeit ist also gut. Der Mangel ist das Belastende.      */
+  const sev = {}; IDS.forEach(a => { sev[a] = 11 - state.freq[a]; });
+
+  /* severity-weighted Outdegree nach PECAN2 (pecanCen):
+     iwo = (Kantenstärke / In-Degree des Ziels) × Belastung des Ziels.
+     Jeder Treiber bekommt damit genau seinen Anteil an der Belastung,
+     die er verursacht. sevwod_combined addiert die eigene Belastung.      */
+  const sevOut = {}; IDS.forEach(a => { sevOut[a] = 0; });
+  eachEdge((a,b,w) => { if (inn[b] > 0) sevOut[a] += (w / inn[b]) * sev[b]; });
+
   const row = n => ({
     id:n.id, label:n.label, cvar:n.cvar, role:n.role,
-    out:out[n.id], inn:inn[n.id],
+    out:out[n.id], inn:inn[n.id], sev:sev[n.id],
+    sevOut:sevOut[n.id], sevwod:sevOut[n.id] + sev[n.id],
     relOut: total ? out[n.id]/total : 0,
     relVul: total ? inn[n.id]/total : 0
   });
-  const procs = NODES.filter(n => n.role === "process").map(row).sort((a,b) => b.out - a.out);
+
+  const key = r => rankMetric === "out" ? r.out : r.sevwod;
+  const procs = NODES.filter(n => n.role === "process").map(row).sort((a,b) => key(b) - key(a));
   const outcome = row(N.life);
   const top = procs[0], bottom = procs[procs.length - 1];
+  const near = (x,y) => Math.abs(x - y) < 0.05;
+
+  /* Zeigen beide Maße auf denselben Prozess? */
+  const byOut = procs.slice().sort((a,b) => b.out - a.out)[0];
+  const bySev = procs.slice().sort((a,b) => b.sevwod - a.sevwod)[0];
+
   return {
     procs:procs, outcome:outcome, total:total, mcni:top, lcni:bottom,
-    tiedTop: procs.filter(r => r.out === top.out),
-    tiedBottom: procs.filter(r => r.out === bottom.out)
+    key:key, topByOut:byOut, topBySev:bySev,
+    agree: byOut.id === bySev.id,
+    tiedTop: procs.filter(r => near(key(r), key(top))),
+    tiedBottom: procs.filter(r => near(key(r), key(bottom)))
   };
 }
 
@@ -636,24 +697,41 @@ function drawNetwork(hideWeak){
 }
 
 /* ---------------- Ergebnis ---------------- */
-function rankCard(r, maxOut, isOutcome){
+const METRIC_LABEL = { out:"Out", sevwod:"Sev-gew.", inn:"In", sev:"Belastung" };
+
+function metricCells(r, isOutcome){
+  const cells = isOutcome
+    ? [["inn", r.inn], ["sev", r.sev]]
+    : [["out", r.out], ["sevwod", num1(r.sevwod)], ["inn", r.inn], ["sev", r.sev]];
+  return '<div class="metrics">' + cells.map(function(c){
+    const active = !isOutcome && c[0] === rankMetric;
+    return '<div class="metric' + (active ? " active" : "") + '">' +
+      '<span class="mk">' + METRIC_LABEL[c[0]] + '</span>' +
+      '<span class="mv">' + c[1] + '</span></div>';
+  }).join("") + '</div>';
+}
+
+function rankCard(r, maxVal, isOutcome){
   if (isOutcome){
     return '<div class="rank outcome" style="--c:var(' + r.cvar + ')">' +
       '<div class="rank-top">' +
         '<span class="rank-name"><span class="dot"></span>' + r.label +
           '<span class="role">Ergebnis</span></span>' +
-        '<span class="rank-out">' + r.inn + '<em>' + pct(r.relVul) + '</em></span>' +
       '</div>' +
-      '<div class="rank-sub">Nimmt auf, treibt nichts an — hier landet die gesamte Wirkung der drei Prozesse.</div>' +
+      metricCells(r, true) +
+      '<div class="rank-sub">Nimmt auf, treibt nichts an — hier landet die Wirkung der drei Prozesse.</div>' +
     '</div>';
   }
+  const val = rankMetric === "out" ? r.out : r.sevwod;
+  const shown = rankMetric === "out" ? r.out : num1(r.sevwod);
+  const hint = rankMetric === "out" ? pct(r.relOut) : "";
   return '<div class="rank" style="--c:var(' + r.cvar + ')">' +
     '<div class="rank-top">' +
       '<span class="rank-name"><span class="dot"></span>' + r.label + '</span>' +
-      '<span class="rank-out">' + r.out + '<em>' + pct(r.relOut) + '</em></span>' +
+      '<span class="rank-out">' + shown + '<em>' + hint + '</em></span>' +
     '</div>' +
-    '<div class="rank-bar"><span style="width:' + ((r.out/maxOut)*100).toFixed(1) + '%"></span></div>' +
-    '<div class="rank-sub">wird von den anderen getrieben: ' + r.inn + ' · ' + pct(r.relVul) + '</div>' +
+    '<div class="rank-bar"><span style="width:' + ((maxVal > 0 ? val/maxVal : 0)*100).toFixed(1) + '%"></span></div>' +
+    metricCells(r, false) +
   '</div>';
 }
 
@@ -671,25 +749,38 @@ function renderResult(){
 
   if (m.total > 0){
     const tie = m.tiedTop.length > 1;
-    const why = tie
-      ? 'Mehrere Prozesse liegen gleichauf: von jedem gehen ' + m.mcni.out + ' von ' + m.total +
-        ' Punkten aus (je ' + pct(m.mcni.relOut) + ' der Netzwerkenergie). Bei einem Gleichstand entscheidet nicht die Zahl, ' +
-        'sondern was sich realistisch bewegen lässt und was dir selbst am wichtigsten ist.'
-      : 'Von hier gehen die stärksten Wirkungen aus (' + m.mcni.out + ' von ' + m.total + ' Punkten, ' +
-        pct(m.mcni.relOut) + ' der gesamten Netzwerkenergie). Wenn sich hier etwas ändert, gerät das ganze Netzwerk ' +
-        'am stärksten in Bewegung — das ist der Kandidat für den Einstieg.';
+    const isSev = rankMetric !== "out";
+    const v = r => isSev ? num1(r.sevwod) : String(r.out);
+    const masz = isSev ? "severity-gewichteten Maß" : "Out-Zentralität";
+    let why = tie
+      ? 'Mehrere Prozesse liegen gleichauf (je ' + v(m.mcni) + ' nach ' + masz + '). ' +
+        'Bei einem Gleichstand entscheidet nicht die Zahl, sondern was sich realistisch bewegen lässt ' +
+        'und was dir selbst am wichtigsten ist.'
+      : (isSev
+          ? 'Dieser Prozess trägt am meisten Belastung — ' + num1(m.mcni.sevwod - m.mcni.sev) +
+            ' davon verursacht er bei den anderen, ' + m.mcni.sev + ' entfällt auf ihn selbst ' +
+            '(zusammen ' + num1(m.mcni.sevwod) + ').'
+          : 'Von hier gehen die stärksten Wirkungen aus (' + m.mcni.out + ' von ' + m.total +
+            ' Punkten, ' + pct(m.mcni.relOut) + ' der gesamten Netzwerkenergie).') +
+        ' Wenn sich hier etwas ändert, gerät das Netzwerk am stärksten in Bewegung — das ist der Kandidat für den Einstieg.';
+    if (!m.agree){
+      why += ' Beachte: Die beiden Maße zeigen auf verschiedene Prozesse — nach Out-Zentralität wäre es ' +
+        m.topByOut.label + ', severity-gewichtet ' + m.topBySev.label +
+        '. Der Unterschied entsteht dort, wo ein Prozess zwar viele Kanten aussendet, diese aber in Knoten laufen, ' +
+        'die ohnehin gut dastehen.';
+    }
     $("#mcni").innerHTML =
       '<div class="callout" style="--c:var(' + N[m.mcni.id].cvar + ')">' +
-        '<span class="k">Stärkster Antrieb im Netzwerk</span>' +
+        '<span class="k">Stärkster Antrieb · ' + (isSev ? "severity-gewichtet" : "Out-Zentralität") + '</span>' +
         '<span class="v">' + list(m.tiedTop.map(r => r.label)) + '</span>' +
         '<span class="why">' + why + ' Am wenigsten treibend ist ' +
-        list(m.tiedBottom.map(r => r.label)) + ' (' + m.lcni.out + ').</span>' +
+        list(m.tiedBottom.map(r => r.label)) + ' (' + v(m.lcni) + ').</span>' +
       '</div>';
   } else { $("#mcni").innerHTML = ""; }
 
-  const maxOut = Math.max(1, m.procs[0].out);
+  const maxVal = Math.max(1e-9, m.key(m.procs[0]));
   $("#ranking").innerHTML =
-    m.procs.map(r => rankCard(r, maxOut, false)).join("") + rankCard(m.outcome, maxOut, true);
+    m.procs.map(r => rankCard(r, maxVal, false)).join("") + rankCard(m.outcome, maxVal, true);
 
   const ls = loops();
   $("#loopwrap").innerHTML = ls.length
@@ -727,6 +818,26 @@ nextBtn.addEventListener("click", () => go(step + 1));
 backBtn.addEventListener("click", () => go(step - 1));
 $("#hideweak").addEventListener("change", renderResult);
 
+Array.prototype.forEach.call($("#metricswitch").children, function(btn){
+  btn.addEventListener("click", function(){
+    rankMetric = btn.dataset.metric;
+    Array.prototype.forEach.call($("#metricswitch").children, function(o){
+      o.classList.toggle("on", o === btn);
+    });
+    try { localStorage.setItem(STORE + ":metric", rankMetric); } catch(e){}
+    renderResult();
+  });
+});
+try {
+  const m = localStorage.getItem(STORE + ":metric");
+  if (m === "out" || m === "sevwod"){
+    rankMetric = m;
+    Array.prototype.forEach.call($("#metricswitch").children, function(o){
+      o.classList.toggle("on", o.dataset.metric === m);
+    });
+  }
+} catch(e){}
+
 demoBtn.addEventListener("click", () => {
   IDS.forEach(a => { state.freq[a] = DEMO.freq[a]; });
   PIDS.forEach(a => IDS.forEach(b => { if (a !== b) state.edges[a][b] = DEMO.edges[a][b]; }));
@@ -745,14 +856,22 @@ $("#btn-copy").addEventListener("click", async () => {
   PIDS.forEach(a => lines.push("  " + N[a].label.padEnd(16) +
     NODES.map(b => (a === b.id ? "—" : String(state.edges[a][b.id])).padStart(9)).join("")));
   lines.push("  " + N.life.label.padEnd(16) + "(Ergebnis — keine ausgehenden Verbindungen)");
+  lines.push("", "Belastung = 11 - Häufigkeit (unsere Knoten sind positive Prozesse)");
   lines.push("", "Zentralität der Prozesse");
-  m.procs.forEach(r => lines.push("  " + r.label.padEnd(16) + "out " + String(r.out).padStart(3) +
-    "   in " + String(r.inn).padStart(3) + "   rel. Wirkung " + pct(r.relOut) +
-    "   rel. Anfälligkeit " + pct(r.relVul)));
-  lines.push("  " + m.outcome.label.padEnd(16) + "in  " + String(m.outcome.inn).padStart(3) +
-    "   (" + pct(m.outcome.relVul) + " der Netzwerkenergie)");
-  lines.push("", "Stärkster Antrieb: " + list(m.tiedTop.map(r => r.label)) +
+  m.procs.forEach(r => lines.push("  " + r.label.padEnd(16) +
+    "out " + String(r.out).padStart(3) +
+    "   in " + String(r.inn).padStart(3) +
+    "   Belastung " + String(r.sev).padStart(2) +
+    "   sev_w_outdegree " + num1(r.sevOut).padStart(5) +
+    "   sevwod_combined " + num1(r.sevwod).padStart(5)));
+  lines.push("  " + m.outcome.label.padEnd(16) +
+    "in  " + String(m.outcome.inn).padStart(3) +
+    "   Belastung " + String(m.outcome.sev).padStart(2) + "   (Ergebnis, kein Outdegree)");
+  lines.push("", "Sortiert nach: " + (rankMetric === "out" ? "Out-Zentralität" : "sevwod_combined"));
+  lines.push("Stärkster Antrieb: " + list(m.tiedTop.map(r => r.label)) +
     "   ·   Schwächster: " + list(m.tiedBottom.map(r => r.label)));
+  if (!m.agree) lines.push("Hinweis: Out-Zentralität zeigt auf " + m.topByOut.label +
+    ", severity-gewichtet auf " + m.topBySev.label + ".");
   const text = lines.join("\n");
   const btn = $("#btn-copy"), old = btn.textContent;
   try { await navigator.clipboard.writeText(text); btn.textContent = "Kopiert"; }
