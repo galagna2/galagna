@@ -125,6 +125,13 @@ header{border-bottom:1px solid var(--rule); padding-bottom:1rem; margin-bottom:1
 .q .label{font-size:.95rem; line-height:1.45; margin-bottom:.15rem}
 .q .hint{font-size:.8rem; color:var(--ink-3); line-height:1.45; margin-bottom:.6rem}
 .q .label b{font-weight:600; color:var(--c)}
+.examples{
+  margin:.5rem 0 .7rem; padding:0 0 0 .75rem; list-style:none;
+  border-left:2px solid var(--c); display:flex; flex-direction:column; gap:.35rem
+}
+.examples li{font-size:.8rem; line-height:1.45; color:var(--ink-3)}
+.proc .lack{font-size:.78rem; color:var(--ink-3); line-height:1.45; margin-top:.15rem}
+.proc .lack strong{color:var(--ink-2); font-weight:600}
 
 .slider-row{display:flex; align-items:center; gap:.85rem}
 .val{
@@ -322,6 +329,7 @@ svg.net{display:block; width:100%; height:auto; max-width:100%}
       <div class="stack-tight">
         <h2 id="s2h">Was wirkt worauf?</h2>
         <p class="lede">Jetzt geht es um die Richtung: Wenn dir einer der drei Prozesse <em>fehlt</em> — wie stark schlägt das auf die anderen und auf deine Lebensqualität durch? Neun kurze Fragen.</p>
+        <p class="muted">Zu jeder Frage stehen ein oder zwei Beispiele. Sie sind Anker, keine Vorgaben — wenn deine Erfahrung anders aussieht, zählt deine.</p>
       </div>
       <div id="edgeblock"></div>
     </div>
@@ -370,6 +378,8 @@ svg.net{display:block; width:100%; height:auto; max-width:100%}
         <button class="ghost" id="btn-png" type="button" hidden>Bild speichern</button>
       </div>
 
+      <p class="note" style="border:0;padding-top:0">Fragen und Beispiele übersetzt und angepasst nach dem PECAN-Survey von <strong>Lavefjord et al. (2025)</strong> — reduziert auf drei Prozesse plus Ergebnis. Die Zentralitätsmaße folgen <strong>PECAN2</strong> (<em>pecanCen</em>).</p>
+
       <p class="note"><strong>Wichtig:</strong> Das ist eine Hypothese, kein Befund. Es zeigt, was <em>du</em> über die Zusammenhänge annimmst — und Menschen irren sich über die Ursachen ihres Verhaltens. Genau deshalb ist es ein guter Gesprächseinstieg und kein Testergebnis.</p>
     </div>
   </section>
@@ -391,19 +401,19 @@ svg.net{display:block; width:100%; height:auto; max-width:100%}
    Das Ergebnis (Lebensqualität) empfängt nur — es treibt nichts an.
    Damit: 3 × 3 = 9 gerichtete Verbindungen.                        */
 const NODES = [
-  { id:"open", label:"Offenheit", poss:"deine", role:"process", cvar:"--open", svar:"--open-soft",
+  { id:"open", lack:"Schwierige Gedanken und Gefühle bestimmen dich und du handelst nach ihnen, auch wenn es dir schadet.", label:"Offenheit", poss:"deine", role:"process", cvar:"--open", svar:"--open-soft",
     what:"Schwierige Gedanken und Gefühle da sein lassen, statt dagegen anzukämpfen.",
     q:"Wie oft lässt du schwierige Gedanken und Gefühle einfach da sein?",
     hint:"Gemeint ist: nicht wegdrücken, nicht ablenken, nicht diskutieren." },
-  { id:"pres", label:"Präsenz", poss:"deine", role:"process", cvar:"--pres", svar:"--pres-soft",
+  { id:"pres", lack:"Du hältst den Fokus schwer auf dem, was gerade zählt, und siehst dich selbst starrer, als du bist.", label:"Präsenz", poss:"deine", role:"process", cvar:"--pres", svar:"--pres-soft",
     what:"Mitbekommen, was gerade passiert — in dir und um dich herum.",
     q:"Wie oft bist du wirklich bei dem, was gerade passiert?",
     hint:"Statt im Kopf bei gestern oder bei nächster Woche zu sein." },
-  { id:"enga", label:"Engagement", poss:"dein", role:"process", cvar:"--enga", svar:"--enga-soft",
+  { id:"enga", lack:"Es ist unklar, was dir wichtig ist — oder du weißt es, lebst aber nicht danach.", label:"Engagement", poss:"dein", role:"process", cvar:"--enga", svar:"--enga-soft",
     what:"Tun, was dir wichtig ist — auch wenn es unbequem wird.",
     q:"Wie oft tust du das, was dir wirklich wichtig ist?",
     hint:"Auch dann, wenn es anstrengend ist oder keine Lust da ist." },
-  { id:"life", label:"Lebensqualität", poss:"deine", role:"outcome", cvar:"--life", svar:"--life-soft",
+  { id:"life", lack:"Die Dinge, die du tun möchtest, gelingen dir nicht.", label:"Lebensqualität", poss:"deine", role:"outcome", cvar:"--life", svar:"--life-soft",
     what:"Wie gut es dir gelingt, das Leben zu führen, das du führen willst. Das Ergebnis, auf das die drei Prozesse einzahlen.",
     q:"Wie oft kannst du die Dinge tun, die dein Leben ausmachen?",
     hint:"Alltag, Arbeit oder Schule, Beziehungen, Freizeit." }
@@ -428,6 +438,46 @@ const DEMO = {
     pres:{ open:8, enga:5, life:7 },
     enga:{ open:7, pres:9, life:7 }
   }
+};
+
+
+/* Beispiele aus dem PECAN-Survey von Lavefjord et al. (2025), Items 5–13,
+   aus dem Englischen übersetzt. Items 14–16 entfallen: Bei uns treibt die
+   Lebensqualität als Ergebnis nichts an.                                   */
+const EDGE_EXAMPLES = {
+  "open>pres": [
+    "Schwierige Gedanken oder Gefühle, die dich bestimmen, lenken dich im Alltag ab.",
+    "Schwierige Gedanken oder Gefühle, die dich bestimmen, führen zu Tunnelblick: Du bekommst schlechter Abstand zu den Dingen."
+  ],
+  "open>enga": [
+    "Schwierige Gedanken oder Gefühle, die dich bestimmen, hindern dich daran zu bestimmen — oder dich daran zu erinnern —, was dir wirklich wichtig ist."
+  ],
+  "open>life": [
+    "Schwierige Gedanken oder Gefühle führen dazu, dass du die Dinge, die du tun möchtest, nicht tust."
+  ],
+  "pres>open": [
+    "Wenn du dich leicht ablenken lässt und den Fokus verlierst, bekommen schwierige Gedanken und Gefühle mehr Raum, dich zu bestimmen.",
+    "Wenn du dich vor allem in einer bestimmten Rolle siehst, können dich bestimmte schwierige Gedanken oder Gefühle stärker bestimmen."
+  ],
+  "pres>enga": [
+    "Wenn du dich leicht ablenken lässt, fällt es schwerer zu bestimmen, was dir wichtig ist.",
+    "Wenn du dich vor allem in einer bestimmten Rolle siehst, fällt es schwerer zu bestimmen, was dir wichtig ist."
+  ],
+  "pres>life": [
+    "Wenn du dich leicht ablenken lässt, fällt es schwerer, die Dinge zu tun, die du tun möchtest.",
+    "Wenn du dich vor allem in einer bestimmten Rolle siehst, fällt es schwerer, die Dinge zu tun, die du tun möchtest."
+  ],
+  "enga>open": [
+    "Wenn unklar ist, was dir wichtig ist, lässt du dich leichter von momentanen Gefühlen oder Gedanken bestimmen."
+  ],
+  "enga>pres": [
+    "Wenn unklar ist, was dir wichtig ist, verlierst du den Fokus.",
+    "Wenn unklar ist, was dir wichtig ist, fällt es schwerer, Abstand zu den Dingen zu bekommen."
+  ],
+  "enga>life": [
+    "Weil unklar ist, was wichtig ist, fällt es schwer, Motivation und Wege zu finden, das zu tun, was du möchtest.",
+    "Auch wenn du weißt, was dir wichtig ist, kann der Alltag dazwischenkommen — der Kontakt dazu geht verloren und damit die Motivation, das zu priorisieren, was du wirklich tun willst."
+  ]
 };
 
 const STORE = "pecan-ca-act-v2";
@@ -479,7 +529,8 @@ NODES.forEach(n => {
   const c = el("div", { class:"proc", style:"--c:var(" + n.cvar + ")" });
   c.innerHTML = '<span class="name">' + n.label +
     (n.role === "outcome" ? '<span class="role">Ergebnis</span>' : "") +
-    '</span><span class="what">' + n.what + '</span>';
+    '</span><span class="what">' + n.what + '</span>' +
+    '<span class="lack"><strong>Mangel heißt:</strong> ' + n.lack + '</span>';
   grid.appendChild(c);
 });
 const demoLine = el("p");
@@ -524,8 +575,12 @@ function buildEdges(){
     g.appendChild(head);
     NODES.filter(t => t.id !== sid).forEach(tgt => {
       const q = el("div", { class:"q", style:"--c:var(" + src.cvar + ")" });
+      const ex = EDGE_EXAMPLES[sid + ">" + tgt.id] || [];
       q.innerHTML = '<p class="label">… wie stark wirkt sich das auf ' + tgt.poss +
-        ' <b style="color:var(' + tgt.cvar + ')">' + tgt.label + '</b> aus?</p>';
+        ' <b style="color:var(' + tgt.cvar + ')">' + tgt.label + '</b> aus?</p>' +
+        (ex.length
+          ? '<ul class="examples">' + ex.map(e => '<li>' + e + '</li>').join("") + '</ul>'
+          : "");
       const s = slider(state.edges[sid][tgt.id], 0, v => {
         state.edges[sid][tgt.id] = v; state.demo = false; save();
       });
