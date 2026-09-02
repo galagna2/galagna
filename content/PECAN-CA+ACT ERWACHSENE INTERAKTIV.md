@@ -4,7 +4,7 @@ title: PECAN-CA+ACT — interaktives Prozessnetzwerk
 
 Ein interaktiver Selbsttest zum [[PECAN-CA ACT]]-Verfahren. Du schätzt drei ACT-Prozesse ein — **Offenheit**, **Präsenz** und **Engagement** — sowie deine **Lebensqualität** als Ergebnis. Daraus entsteht dein wahrgenommenes Kausalnetzwerk mit Zentralitätswerten.
 
-Neun gerichtete Einschätzungen, etwa vier Minuten. Alles bleibt im Browser: Es werden keine Daten gesendet, und gespeichert wird nur lokal auf deinem eigenen Gerät. BLA BLA
+Neun gerichtete Einschätzungen, etwa vier Minuten. Alles bleibt im Browser: Es werden keine Daten gesendet, und gespeichert wird nur lokal auf deinem eigenen Gerät.
 
 <a href="/static/pecan/" target="_blank" rel="noopener">→ In einem eigenen Tab öffnen</a>
 
