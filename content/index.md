@@ -10,6 +10,9 @@ Here you may find content mostly related to:
 - Acceptance- and Commitment Therapy ([[ACT]])
 - blogging and [[PhD]] mumbling.
 
+Here my latest posts:
+[[05092026 September Haiku (DE)]]
+
 Hope you enjoy! Please, feel free to give me some feedback :)
 giorgio.alagna@gmx.com
 
