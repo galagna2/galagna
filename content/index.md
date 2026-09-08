@@ -11,7 +11,7 @@ Here you may find content mostly related to:
 - blogging and [[PhD]] mumbling.
 
 Here my latest posts:
-[[05092026 September Haiku (DE)]]
+[[05092026 Haiku for September]]
 
 Hope you enjoy! Please, feel free to give me some feedback :)
 giorgio.alagna@gmx.com
