@@ -61,9 +61,6 @@ p{margin:0}
   color:var(--ink-3); margin:0 0 .45rem
 }
 .lede{color:var(--ink-2); font-size:1.02rem}
-.byline{font-size:.82rem; color:var(--ink-3); margin-top:.35rem}
-.byline a{color:var(--accent); text-decoration:none; border-bottom:1px solid transparent}
-.byline a:hover{border-bottom-color:currentColor}
 .muted{color:var(--ink-3); font-size:.85rem; line-height:1.5}
 
 /* ---------- header + progress ---------- */
@@ -125,13 +122,6 @@ header{border-bottom:1px solid var(--rule); padding-bottom:1rem; margin-bottom:1
 .q .label{font-size:.95rem; line-height:1.45; margin-bottom:.15rem}
 .q .hint{font-size:.8rem; color:var(--ink-3); line-height:1.45; margin-bottom:.6rem}
 .q .label b{font-weight:600; color:var(--c)}
-.examples{
-  margin:.5rem 0 .7rem; padding:0 0 0 .75rem; list-style:none;
-  border-left:2px solid var(--c); display:flex; flex-direction:column; gap:.35rem
-}
-.examples li{font-size:.8rem; line-height:1.45; color:var(--ink-3)}
-.proc .lack{font-size:.78rem; color:var(--ink-3); line-height:1.45; margin-top:.15rem}
-.proc .lack strong{color:var(--ink-2); font-weight:600}
 
 .slider-row{display:flex; align-items:center; gap:.85rem}
 .val{
@@ -219,33 +209,6 @@ svg.net{display:block; width:100%; height:auto; max-width:100%}
 .rank-bar span{display:block; height:6px; border-radius:3px; background:var(--c)}
 .rank-sub{font-size:.78rem; color:var(--ink-3); font-variant-numeric:tabular-nums}
 .rank.outcome{border-left-style:dashed; margin-top:.25rem}
-
-.segmented{
-  display:flex; gap:.25rem; background:var(--surface-2); border:1px solid var(--rule);
-  border-radius:9px; padding:.22rem
-}
-.segmented button{
-  flex:1; font-size:.8rem; font-weight:600; padding:.45rem .4rem; border-radius:7px;
-  background:transparent; color:var(--ink-3); border:0; line-height:1.3
-}
-.segmented button.on{background:var(--surface); color:var(--ink); box-shadow:var(--shadow)}
-
-.metrics{display:grid; grid-template-columns:repeat(auto-fit,minmax(4.1rem,1fr)); gap:.3rem}
-.metric{
-  background:var(--surface-2); border-radius:7px; padding:.4rem .45rem; min-width:0;
-  border:1.5px solid transparent
-}
-.metric.active{border-color:var(--c); background:var(--surface)}
-.metric .mk{
-  display:block; font-size:.58rem; letter-spacing:.05em; text-transform:uppercase;
-  color:var(--ink-3); font-weight:600; line-height:1.3; white-space:nowrap;
-  overflow:hidden; text-overflow:ellipsis
-}
-.metric .mv{
-  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.95rem; font-weight:500;
-  color:var(--ink); font-variant-numeric:tabular-nums
-}
-.metric.active .mv{color:var(--c)}
 .rank-name .role{margin-left:.15rem}
 .q .label .role{vertical-align:middle}
 .loops{display:flex; flex-direction:column; gap:.5rem}
@@ -288,7 +251,6 @@ svg.net{display:block; width:100%; height:auto; max-width:100%}
   <header>
     <p class="eyebrow">PECAN-CA ACT · Universität zu Köln</p>
     <h1>Dein Prozessnetzwerk</h1>
-    <p class="byline">Giorgio Alagna · <a href="mailto:giorgio.alagna@uni-koeln.de">giorgio.alagna@uni-koeln.de</a></p>
     <ul class="steps" id="steps" aria-hidden="true">
       <li></li><li></li><li></li><li></li>
     </ul>
@@ -329,7 +291,6 @@ svg.net{display:block; width:100%; height:auto; max-width:100%}
       <div class="stack-tight">
         <h2 id="s2h">Was wirkt worauf?</h2>
         <p class="lede">Jetzt geht es um die Richtung: Wenn dir einer der drei Prozesse <em>fehlt</em> — wie stark schlägt das auf die anderen und auf deine Lebensqualität durch? Neun kurze Fragen.</p>
-        <p class="muted">Zu jeder Frage stehen ein oder zwei Beispiele. Sie sind Anker, keine Vorgaben — wenn deine Erfahrung anders aussieht, zählt deine.</p>
       </div>
       <div id="edgeblock"></div>
     </div>
@@ -348,7 +309,7 @@ svg.net{display:block; width:100%; height:auto; max-width:100%}
       <div class="figwrap">
         <figure>
           <div id="netholder"></div>
-          <figcaption>Die drei <strong>Kreise</strong> sind die Prozesse, die <strong>Kapsel</strong> unten ist das Ergebnis: Sie nimmt auf, sie treibt nichts an. Größe = wie oft etwas vorkommt, Pfeilstärke = wie stark ein Mangel durchschlägt. Zwischen zwei Prozessen laufen die Pfeile im Uhrzeigersinn um ihre Verbindung herum.</figcaption>
+          <figcaption>Die drei <strong>Kreise</strong> sind die Prozesse, die <strong>Kapsel</strong> unten ist das Ergebnis: Sie nimmt auf, sie treibt nichts an. Kreisgröße = wie oft der Prozess vorkommt (deine Häufigkeitsangabe), Pfeilstärke = wie stark ein Mangel durchschlägt. Zwischen zwei Prozessen laufen die Pfeile im Uhrzeigersinn um ihre Verbindung herum.</figcaption>
         </figure>
       </div>
 
@@ -361,14 +322,10 @@ svg.net{display:block; width:100%; height:auto; max-width:100%}
 
       <div class="stack-tight">
         <h3>Wie stark treibt jeder Prozess das Netzwerk?</h3>
-        <div class="segmented" id="metricswitch" role="group" aria-label="Nach welchem Maß sortiert wird">
-          <button type="button" data-metric="sevwod" class="on">Severity-gewichtet</button>
-          <button type="button" data-metric="out">Out-Zentralität</button>
-        </div>
         <div class="ranking" id="ranking"></div>
       </div>
-      <p class="muted"><strong>Out</strong> — Summe der ausgehenden Kanten (klassische Out-Zentralität). <strong>In</strong> — Summe der eingehenden Kanten. <strong>Belastung</strong> — der Mangel an diesem Prozess, berechnet als 11 minus Häufigkeit: Was selten vorkommt, belastet stark. <strong>Sev-gew.</strong> — severity-weighted Outdegree plus eigene Belastung (<em>sevwod_combined</em> nach PECAN2): Jede ausgehende Kante zählt mit dem Anteil, den sie am Zufluss des Zielknotens hat, multipliziert mit dessen Belastung. Ein Prozess bekommt also genau den Teil der fremden Belastung zugerechnet, den er verursacht — plus seine eigene.</p>
-      <p class="muted">Die Lebensqualität hat naturgemäß weder Out- noch Sev-gew.-Wert: Sie ist als Ergebnis modelliert und wirkt auf nichts zurück.</p>
+      <p class="muted">Die große Zahl ist die <strong>Out-Zentralität</strong>: die Summe der Gewichte aller <em>Kanten</em> (Pfeile), die von diesem Prozess ausgehen — auf die anderen beiden und auf die Lebensqualität. Nicht die Anzahl der Pfeile, sondern die Summe ihrer Werte. Darunter steht die <strong>In-Zentralität</strong>: die Summe der eingehenden Kantengewichte. Die Lebensqualität hat keine Out-Zentralität — sie ist als Ergebnis modelliert und wirkt per Definition auf nichts zurück.</p>
+      <p class="muted"><strong>Gewichtet nach Mangel</strong> ist eine Zusatzzahl (<em>sevwod_combined</em> nach PECAN2). Der <strong>Mangel</strong> eines Prozesses ist 11 minus deine Häufigkeitsangabe — keine eigene Frage, sondern deine Häufigkeit umgedreht, passend zur Fragerichtung der Verbindungen („wenn dir Offenheit fehlt …“). Jede ausgehende Kante zählt dann mit dem Anteil, den sie am Zufluss ihres Zielknotens hat, multipliziert mit dessen Mangel — plus dem eigenen Mangel. <strong>Erhoben wurden nur Häufigkeit und Einfluss.</strong> Wie sehr dich etwas belastet, fragt dieses Tool nicht.</p>
 
       <div id="loopwrap"></div>
 
@@ -377,8 +334,6 @@ svg.net{display:block; width:100%; height:auto; max-width:100%}
         <button class="ghost" id="btn-copy" type="button">Werte kopieren</button>
         <button class="ghost" id="btn-png" type="button" hidden>Bild speichern</button>
       </div>
-
-      <p class="note" style="border:0;padding-top:0">Fragen und Beispiele übersetzt und angepasst nach dem PECAN-Survey von <strong>Lavefjord et al. (2025)</strong> — reduziert auf drei Prozesse plus Ergebnis. Die Zentralitätsmaße folgen <strong>PECAN2</strong> (<em>pecanCen</em>).</p>
 
       <p class="note"><strong>Wichtig:</strong> Das ist eine Hypothese, kein Befund. Es zeigt, was <em>du</em> über die Zusammenhänge annimmst — und Menschen irren sich über die Ursachen ihres Verhaltens. Genau deshalb ist es ein guter Gesprächseinstieg und kein Testergebnis.</p>
     </div>
@@ -401,19 +356,19 @@ svg.net{display:block; width:100%; height:auto; max-width:100%}
    Das Ergebnis (Lebensqualität) empfängt nur — es treibt nichts an.
    Damit: 3 × 3 = 9 gerichtete Verbindungen.                        */
 const NODES = [
-  { id:"open", lack:"Schwierige Gedanken und Gefühle bestimmen dich und du handelst nach ihnen, auch wenn es dir schadet.", label:"Offenheit", poss:"deine", role:"process", cvar:"--open", svar:"--open-soft",
+  { id:"open", label:"Offenheit", poss:"deine", role:"process", cvar:"--open", svar:"--open-soft",
     what:"Schwierige Gedanken und Gefühle da sein lassen, statt dagegen anzukämpfen.",
     q:"Wie oft lässt du schwierige Gedanken und Gefühle einfach da sein?",
     hint:"Gemeint ist: nicht wegdrücken, nicht ablenken, nicht diskutieren." },
-  { id:"pres", lack:"Du hältst den Fokus schwer auf dem, was gerade zählt, und siehst dich selbst starrer, als du bist.", label:"Präsenz", poss:"deine", role:"process", cvar:"--pres", svar:"--pres-soft",
+  { id:"pres", label:"Präsenz", poss:"deine", role:"process", cvar:"--pres", svar:"--pres-soft",
     what:"Mitbekommen, was gerade passiert — in dir und um dich herum.",
     q:"Wie oft bist du wirklich bei dem, was gerade passiert?",
     hint:"Statt im Kopf bei gestern oder bei nächster Woche zu sein." },
-  { id:"enga", lack:"Es ist unklar, was dir wichtig ist — oder du weißt es, lebst aber nicht danach.", label:"Engagement", poss:"dein", role:"process", cvar:"--enga", svar:"--enga-soft",
+  { id:"enga", label:"Engagement", poss:"dein", role:"process", cvar:"--enga", svar:"--enga-soft",
     what:"Tun, was dir wichtig ist — auch wenn es unbequem wird.",
     q:"Wie oft tust du das, was dir wirklich wichtig ist?",
     hint:"Auch dann, wenn es anstrengend ist oder keine Lust da ist." },
-  { id:"life", lack:"Die Dinge, die du tun möchtest, gelingen dir nicht.", label:"Lebensqualität", poss:"deine", role:"outcome", cvar:"--life", svar:"--life-soft",
+  { id:"life", label:"Lebensqualität", poss:"deine", role:"outcome", cvar:"--life", svar:"--life-soft",
     what:"Wie gut es dir gelingt, das Leben zu führen, das du führen willst. Das Ergebnis, auf das die drei Prozesse einzahlen.",
     q:"Wie oft kannst du die Dinge tun, die dein Leben ausmachen?",
     hint:"Alltag, Arbeit oder Schule, Beziehungen, Freizeit." }
@@ -440,46 +395,6 @@ const DEMO = {
   }
 };
 
-
-/* Beispiele aus dem PECAN-Survey von Lavefjord et al. (2025), Items 5–13,
-   aus dem Englischen übersetzt. Items 14–16 entfallen: Bei uns treibt die
-   Lebensqualität als Ergebnis nichts an.                                   */
-const EDGE_EXAMPLES = {
-  "open>pres": [
-    "Schwierige Gedanken oder Gefühle, die dich bestimmen, lenken dich im Alltag ab.",
-    "Schwierige Gedanken oder Gefühle, die dich bestimmen, führen zu Tunnelblick: Du bekommst schlechter Abstand zu den Dingen."
-  ],
-  "open>enga": [
-    "Schwierige Gedanken oder Gefühle, die dich bestimmen, hindern dich daran zu bestimmen — oder dich daran zu erinnern —, was dir wirklich wichtig ist."
-  ],
-  "open>life": [
-    "Schwierige Gedanken oder Gefühle führen dazu, dass du die Dinge, die du tun möchtest, nicht tust."
-  ],
-  "pres>open": [
-    "Wenn du dich leicht ablenken lässt und den Fokus verlierst, bekommen schwierige Gedanken und Gefühle mehr Raum, dich zu bestimmen.",
-    "Wenn du dich vor allem in einer bestimmten Rolle siehst, können dich bestimmte schwierige Gedanken oder Gefühle stärker bestimmen."
-  ],
-  "pres>enga": [
-    "Wenn du dich leicht ablenken lässt, fällt es schwerer zu bestimmen, was dir wichtig ist.",
-    "Wenn du dich vor allem in einer bestimmten Rolle siehst, fällt es schwerer zu bestimmen, was dir wichtig ist."
-  ],
-  "pres>life": [
-    "Wenn du dich leicht ablenken lässt, fällt es schwerer, die Dinge zu tun, die du tun möchtest.",
-    "Wenn du dich vor allem in einer bestimmten Rolle siehst, fällt es schwerer, die Dinge zu tun, die du tun möchtest."
-  ],
-  "enga>open": [
-    "Wenn unklar ist, was dir wichtig ist, lässt du dich leichter von momentanen Gefühlen oder Gedanken bestimmen."
-  ],
-  "enga>pres": [
-    "Wenn unklar ist, was dir wichtig ist, verlierst du den Fokus.",
-    "Wenn unklar ist, was dir wichtig ist, fällt es schwerer, Abstand zu den Dingen zu bekommen."
-  ],
-  "enga>life": [
-    "Weil unklar ist, was wichtig ist, fällt es schwer, Motivation und Wege zu finden, das zu tun, was du möchtest.",
-    "Auch wenn du weißt, was dir wichtig ist, kann der Alltag dazwischenkommen — der Kontakt dazu geht verloren und damit die Motivation, das zu priorisieren, was du wirklich tun willst."
-  ]
-};
-
 const STORE = "pecan-ca-act-v2";
 const STEPNAMES = ["Start","Häufigkeit","Einfluss","Ergebnis"];
 
@@ -493,7 +408,6 @@ function blank(){
 }
 let state = blank();
 let step = 0;
-let rankMetric = "sevwod";   // "sevwod" | "out"
 
 function save(){ try { localStorage.setItem(STORE, JSON.stringify(state)); } catch(e){} }
 function load(){
@@ -514,7 +428,7 @@ const $ = s => document.querySelector(s);
 const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim() || "#888";
 const f1 = v => Math.round(v * 10) / 10;
 const pct = v => (v * 100).toFixed(1).replace(".", ",") + " %";
-const num1 = v => v.toFixed(1).replace(".", ",");
+const dec = v => v.toFixed(1).replace(".", ",");
 const list = a => a.length < 2 ? (a[0] || "") : a.slice(0,-1).join(", ") + " und " + a[a.length-1];
 function el(tag, attrs, html){
   const e = document.createElement(tag);
@@ -529,8 +443,7 @@ NODES.forEach(n => {
   const c = el("div", { class:"proc", style:"--c:var(" + n.cvar + ")" });
   c.innerHTML = '<span class="name">' + n.label +
     (n.role === "outcome" ? '<span class="role">Ergebnis</span>' : "") +
-    '</span><span class="what">' + n.what + '</span>' +
-    '<span class="lack"><strong>Mangel heißt:</strong> ' + n.lack + '</span>';
+    '</span><span class="what">' + n.what + '</span>';
   grid.appendChild(c);
 });
 const demoLine = el("p");
@@ -575,12 +488,8 @@ function buildEdges(){
     g.appendChild(head);
     NODES.filter(t => t.id !== sid).forEach(tgt => {
       const q = el("div", { class:"q", style:"--c:var(" + src.cvar + ")" });
-      const ex = EDGE_EXAMPLES[sid + ">" + tgt.id] || [];
       q.innerHTML = '<p class="label">… wie stark wirkt sich das auf ' + tgt.poss +
-        ' <b style="color:var(' + tgt.cvar + ')">' + tgt.label + '</b> aus?</p>' +
-        (ex.length
-          ? '<ul class="examples">' + ex.map(e => '<li>' + e + '</li>').join("") + '</ul>'
-          : "");
+        ' <b style="color:var(' + tgt.cvar + ')">' + tgt.label + '</b> aus?</p>';
       const s = slider(state.edges[sid][tgt.id], 0, v => {
         state.edges[sid][tgt.id] = v; state.demo = false; save();
       });
@@ -602,42 +511,28 @@ function metrics(){
   const out = {}, inn = {}; let total = 0;
   IDS.forEach(a => { out[a] = 0; inn[a] = 0; });
   eachEdge((a,b,w) => { out[a] += w; inn[b] += w; total += w; });
-
-  /* Belastung als Severity-Analogon: unsere Knoten sind POSITIVE Prozesse,
-     eine hohe Häufigkeit ist also gut. Der Mangel ist das Belastende.      */
+  /* Mangel = 11 minus Häufigkeit. Keine eigene Frage, sondern die
+     Häufigkeitsangabe umgedreht — passend zur Fragerichtung der Kanten
+     ("wenn dir X fehlt ..."). Belastung wird hier nicht erhoben.        */
   const sev = {}; IDS.forEach(a => { sev[a] = 11 - state.freq[a]; });
-
-  /* severity-weighted Outdegree nach PECAN2 (pecanCen):
-     iwo = (Kantenstärke / In-Degree des Ziels) × Belastung des Ziels.
-     Jeder Treiber bekommt damit genau seinen Anteil an der Belastung,
-     die er verursacht. sevwod_combined addiert die eigene Belastung.      */
-  const sevOut = {}; IDS.forEach(a => { sevOut[a] = 0; });
-  eachEdge((a,b,w) => { if (inn[b] > 0) sevOut[a] += (w / inn[b]) * sev[b]; });
-
+  /* sevwod_combined (PECAN2): jede ausgehende Kante zählt mit ihrem Anteil
+     am Zufluss ihres Zielknotens, multipliziert mit dessen Mangel — plus
+     dem eigenen Mangel.                                                  */
+  const sw = {}; IDS.forEach(a => { sw[a] = sev[a]; });
+  eachEdge((a,b,w) => { if (w > 0 && inn[b] > 0) sw[a] += (w / inn[b]) * sev[b]; });
   const row = n => ({
     id:n.id, label:n.label, cvar:n.cvar, role:n.role,
-    out:out[n.id], inn:inn[n.id], sev:sev[n.id],
-    sevOut:sevOut[n.id], sevwod:sevOut[n.id] + sev[n.id],
+    out:out[n.id], inn:inn[n.id], sev:sev[n.id], sevwod:sw[n.id],
     relOut: total ? out[n.id]/total : 0,
     relVul: total ? inn[n.id]/total : 0
   });
-
-  const key = r => rankMetric === "out" ? r.out : r.sevwod;
-  const procs = NODES.filter(n => n.role === "process").map(row).sort((a,b) => key(b) - key(a));
+  const procs = NODES.filter(n => n.role === "process").map(row).sort((a,b) => b.out - a.out);
   const outcome = row(N.life);
   const top = procs[0], bottom = procs[procs.length - 1];
-  const near = (x,y) => Math.abs(x - y) < 0.05;
-
-  /* Zeigen beide Maße auf denselben Prozess? */
-  const byOut = procs.slice().sort((a,b) => b.out - a.out)[0];
-  const bySev = procs.slice().sort((a,b) => b.sevwod - a.sevwod)[0];
-
   return {
     procs:procs, outcome:outcome, total:total, mcni:top, lcni:bottom,
-    key:key, topByOut:byOut, topBySev:bySev,
-    agree: byOut.id === bySev.id,
-    tiedTop: procs.filter(r => near(key(r), key(top))),
-    tiedBottom: procs.filter(r => near(key(r), key(bottom)))
+    tiedTop: procs.filter(r => r.out === top.out),
+    tiedBottom: procs.filter(r => r.out === bottom.out)
   };
 }
 
@@ -659,7 +554,7 @@ function loops(){
 }
 
 /* ---------------- Netzwerk zeichnen ---------------- */
-const radius = f => 17 + f * 2.2;
+const radius = f => 13 + f * 3.2;
 /* Abstand vom Mittelpunkt bis zum Rand in Richtung (dx,dy) — Kreis bzw. Kapsel. */
 function boundary(id, dx, dy){
   const r = radius(state.freq[id]);
@@ -752,41 +647,26 @@ function drawNetwork(hideWeak){
 }
 
 /* ---------------- Ergebnis ---------------- */
-const METRIC_LABEL = { out:"Out", sevwod:"Sev-gew.", inn:"In", sev:"Belastung" };
-
-function metricCells(r, isOutcome){
-  const cells = isOutcome
-    ? [["inn", r.inn], ["sev", r.sev]]
-    : [["out", r.out], ["sevwod", num1(r.sevwod)], ["inn", r.inn], ["sev", r.sev]];
-  return '<div class="metrics">' + cells.map(function(c){
-    const active = !isOutcome && c[0] === rankMetric;
-    return '<div class="metric' + (active ? " active" : "") + '">' +
-      '<span class="mk">' + METRIC_LABEL[c[0]] + '</span>' +
-      '<span class="mv">' + c[1] + '</span></div>';
-  }).join("") + '</div>';
-}
-
-function rankCard(r, maxVal, isOutcome){
+function rankCard(r, maxOut, isOutcome){
   if (isOutcome){
     return '<div class="rank outcome" style="--c:var(' + r.cvar + ')">' +
       '<div class="rank-top">' +
         '<span class="rank-name"><span class="dot"></span>' + r.label +
           '<span class="role">Ergebnis</span></span>' +
+        '<span class="rank-out">' + r.inn + '<em>' + pct(r.relVul) + '</em></span>' +
       '</div>' +
-      metricCells(r, true) +
-      '<div class="rank-sub">Nimmt auf, treibt nichts an — hier landet die Wirkung der drei Prozesse.</div>' +
+      '<div class="rank-sub">Nimmt auf, treibt nichts an — hier landet die gesamte Wirkung der drei Prozesse.</div>' +
+      '<div class="rank-sub">gewichtet nach Mangel: <b>' + dec(r.sevwod) + '</b> — nur der eigene Mangel (' + r.sev + '), da keine ausgehenden Kanten</div>' +
     '</div>';
   }
-  const val = rankMetric === "out" ? r.out : r.sevwod;
-  const shown = rankMetric === "out" ? r.out : num1(r.sevwod);
-  const hint = rankMetric === "out" ? pct(r.relOut) : "";
   return '<div class="rank" style="--c:var(' + r.cvar + ')">' +
     '<div class="rank-top">' +
       '<span class="rank-name"><span class="dot"></span>' + r.label + '</span>' +
-      '<span class="rank-out">' + shown + '<em>' + hint + '</em></span>' +
+      '<span class="rank-out">' + r.out + '<em>' + pct(r.relOut) + '</em></span>' +
     '</div>' +
-    '<div class="rank-bar"><span style="width:' + ((maxVal > 0 ? val/maxVal : 0)*100).toFixed(1) + '%"></span></div>' +
-    metricCells(r, false) +
+    '<div class="rank-bar"><span style="width:' + ((r.out/maxOut)*100).toFixed(1) + '%"></span></div>' +
+    '<div class="rank-sub">wird von den anderen getrieben: ' + r.inn + ' · ' + pct(r.relVul) + '</div>' +
+    '<div class="rank-sub">gewichtet nach Mangel: <b>' + dec(r.sevwod) + '</b> · Mangel ' + r.sev + '</div>' +
   '</div>';
 }
 
@@ -804,38 +684,25 @@ function renderResult(){
 
   if (m.total > 0){
     const tie = m.tiedTop.length > 1;
-    const isSev = rankMetric !== "out";
-    const v = r => isSev ? num1(r.sevwod) : String(r.out);
-    const masz = isSev ? "severity-gewichteten Maß" : "Out-Zentralität";
-    let why = tie
-      ? 'Mehrere Prozesse liegen gleichauf (je ' + v(m.mcni) + ' nach ' + masz + '). ' +
-        'Bei einem Gleichstand entscheidet nicht die Zahl, sondern was sich realistisch bewegen lässt ' +
-        'und was dir selbst am wichtigsten ist.'
-      : (isSev
-          ? 'Dieser Prozess trägt am meisten Belastung — ' + num1(m.mcni.sevwod - m.mcni.sev) +
-            ' davon verursacht er bei den anderen, ' + m.mcni.sev + ' entfällt auf ihn selbst ' +
-            '(zusammen ' + num1(m.mcni.sevwod) + ').'
-          : 'Von hier gehen die stärksten Wirkungen aus (' + m.mcni.out + ' von ' + m.total +
-            ' Punkten, ' + pct(m.mcni.relOut) + ' der gesamten Netzwerkenergie).') +
-        ' Wenn sich hier etwas ändert, gerät das Netzwerk am stärksten in Bewegung — das ist der Kandidat für den Einstieg.';
-    if (!m.agree){
-      why += ' Beachte: Die beiden Maße zeigen auf verschiedene Prozesse — nach Out-Zentralität wäre es ' +
-        m.topByOut.label + ', severity-gewichtet ' + m.topBySev.label +
-        '. Der Unterschied entsteht dort, wo ein Prozess zwar viele Kanten aussendet, diese aber in Knoten laufen, ' +
-        'die ohnehin gut dastehen.';
-    }
+    const why = tie
+      ? 'Mehrere Prozesse liegen gleichauf: von jedem gehen ' + m.mcni.out + ' von ' + m.total +
+        ' Punkten aus (je ' + pct(m.mcni.relOut) + ' der Netzwerkenergie). Bei einem Gleichstand entscheidet nicht die Zahl, ' +
+        'sondern was sich realistisch bewegen lässt und was dir selbst am wichtigsten ist.'
+      : 'Von hier gehen die stärksten Wirkungen aus (' + m.mcni.out + ' von ' + m.total + ' Punkten, ' +
+        pct(m.mcni.relOut) + ' der gesamten Netzwerkenergie). Wenn sich hier etwas ändert, gerät das ganze Netzwerk ' +
+        'am stärksten in Bewegung — das ist der Kandidat für den Einstieg.';
     $("#mcni").innerHTML =
       '<div class="callout" style="--c:var(' + N[m.mcni.id].cvar + ')">' +
-        '<span class="k">Stärkster Antrieb · ' + (isSev ? "severity-gewichtet" : "Out-Zentralität") + '</span>' +
+        '<span class="k">Stärkster Antrieb im Netzwerk</span>' +
         '<span class="v">' + list(m.tiedTop.map(r => r.label)) + '</span>' +
         '<span class="why">' + why + ' Am wenigsten treibend ist ' +
-        list(m.tiedBottom.map(r => r.label)) + ' (' + v(m.lcni) + ').</span>' +
+        list(m.tiedBottom.map(r => r.label)) + ' (' + m.lcni.out + ').</span>' +
       '</div>';
   } else { $("#mcni").innerHTML = ""; }
 
-  const maxVal = Math.max(1e-9, m.key(m.procs[0]));
+  const maxOut = Math.max(1, m.procs[0].out);
   $("#ranking").innerHTML =
-    m.procs.map(r => rankCard(r, maxVal, false)).join("") + rankCard(m.outcome, maxVal, true);
+    m.procs.map(r => rankCard(r, maxOut, false)).join("") + rankCard(m.outcome, maxOut, true);
 
   const ls = loops();
   $("#loopwrap").innerHTML = ls.length
@@ -873,26 +740,6 @@ nextBtn.addEventListener("click", () => go(step + 1));
 backBtn.addEventListener("click", () => go(step - 1));
 $("#hideweak").addEventListener("change", renderResult);
 
-Array.prototype.forEach.call($("#metricswitch").children, function(btn){
-  btn.addEventListener("click", function(){
-    rankMetric = btn.dataset.metric;
-    Array.prototype.forEach.call($("#metricswitch").children, function(o){
-      o.classList.toggle("on", o === btn);
-    });
-    try { localStorage.setItem(STORE + ":metric", rankMetric); } catch(e){}
-    renderResult();
-  });
-});
-try {
-  const m = localStorage.getItem(STORE + ":metric");
-  if (m === "out" || m === "sevwod"){
-    rankMetric = m;
-    Array.prototype.forEach.call($("#metricswitch").children, function(o){
-      o.classList.toggle("on", o.dataset.metric === m);
-    });
-  }
-} catch(e){}
-
 demoBtn.addEventListener("click", () => {
   IDS.forEach(a => { state.freq[a] = DEMO.freq[a]; });
   PIDS.forEach(a => IDS.forEach(b => { if (a !== b) state.edges[a][b] = DEMO.edges[a][b]; }));
@@ -911,22 +758,15 @@ $("#btn-copy").addEventListener("click", async () => {
   PIDS.forEach(a => lines.push("  " + N[a].label.padEnd(16) +
     NODES.map(b => (a === b.id ? "—" : String(state.edges[a][b.id])).padStart(9)).join("")));
   lines.push("  " + N.life.label.padEnd(16) + "(Ergebnis — keine ausgehenden Verbindungen)");
-  lines.push("", "Belastung = 11 - Häufigkeit (unsere Knoten sind positive Prozesse)");
   lines.push("", "Zentralität der Prozesse");
-  m.procs.forEach(r => lines.push("  " + r.label.padEnd(16) +
-    "out " + String(r.out).padStart(3) +
-    "   in " + String(r.inn).padStart(3) +
-    "   Belastung " + String(r.sev).padStart(2) +
-    "   sev_w_outdegree " + num1(r.sevOut).padStart(5) +
-    "   sevwod_combined " + num1(r.sevwod).padStart(5)));
-  lines.push("  " + m.outcome.label.padEnd(16) +
-    "in  " + String(m.outcome.inn).padStart(3) +
-    "   Belastung " + String(m.outcome.sev).padStart(2) + "   (Ergebnis, kein Outdegree)");
-  lines.push("", "Sortiert nach: " + (rankMetric === "out" ? "Out-Zentralität" : "sevwod_combined"));
-  lines.push("Stärkster Antrieb: " + list(m.tiedTop.map(r => r.label)) +
+  m.procs.forEach(r => lines.push("  " + r.label.padEnd(16) + "out " + String(r.out).padStart(3) +
+    "   in " + String(r.inn).padStart(3) + "   rel. Wirkung " + pct(r.relOut) +
+    "   rel. Anfälligkeit " + pct(r.relVul) +
+    "   gew. n. Mangel " + dec(r.sevwod) + " (Mangel " + r.sev + ")"));
+  lines.push("  " + m.outcome.label.padEnd(16) + "in  " + String(m.outcome.inn).padStart(3) +
+    "   (" + pct(m.outcome.relVul) + " der Netzwerkenergie)");
+  lines.push("", "Stärkster Antrieb: " + list(m.tiedTop.map(r => r.label)) +
     "   ·   Schwächster: " + list(m.tiedBottom.map(r => r.label)));
-  if (!m.agree) lines.push("Hinweis: Out-Zentralität zeigt auf " + m.topByOut.label +
-    ", severity-gewichtet auf " + m.topBySev.label + ".");
   const text = lines.join("\n");
   const btn = $("#btn-copy"), old = btn.textContent;
   try { await navigator.clipboard.writeText(text); btn.textContent = "Kopiert"; }
