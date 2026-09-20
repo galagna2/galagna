@@ -5,10 +5,11 @@ Hi :) This is my [rhizomatic](https://jzhao.xyz/thoughts/rhizomatic-vs-arboresce
 
 Here you may find content mostly related to:
 - Process-based therapy ([[PBT]])
+- Acceptance- and Commitment Therapy ([[ACT]])
 - Perceived Causal Network ([[PECAN]])
 - (Pediatric) [[Psycho-Oncology]]
-- Acceptance- and Commitment Therapy ([[ACT]])
-- blogging and [[PhD]] mumbling.
+ 
+ Look out for my series [[Impatient Notes on Long Reads]].
 
 Here my latest posts:
 [[05092026 Haiku for September]]
