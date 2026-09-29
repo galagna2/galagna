@@ -4,6 +4,9 @@ Titledraft: "false"
 ---
 *Die Ergebnisse der Studie zum PAAQ-G werden [[hier]] am Ende der Auswertung angezeigt.*
 
+![[Pasted image 20260929144651.png|559]]
+**Vincent van Gogh, „Erste Schritte (nach Millet)“** (1890, Metropolitan Museum)
+
 Viele Eltern kennen das: Ihnen ist es wichtig, dass Ihre Lieblingsmenschen keine anstrengenden Emotionen „beherbergen“ müssen. Das Weinen des eigenen Kindes tut weh. Dass Sie es kaum aushalten, ist kein Mangel an Stärke. Es ist eher ein Zeichen dafür, dass Sie dieses Gefühl selbst kennen. Dass Sie wissen, wie schwer es ist, so etwas in sich zu tragen.
 
 Und genau deshalb ist es knifflig. Wenn wir nachgeben, ablenken oder schnell trösten, wird es sofort ruhiger – im Kind und in uns. Diese Erleichterung ist auch der Grund, warum wir am nächsten Morgen dasselbe tun. Nur bekommt Ihr Sohn dabei selten die Gelegenheit zu erfahren, dass er einen schwierigen Vormittag übersteht. Dass er der Angst nicht gehorchen muss und sich für etwas anderes entscheiden kann.

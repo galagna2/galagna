@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Ihre Werte verstehen – Studie PAAQ-G</title>
+<style>
+/* Keine externen Anfragen: keine Webfonts, keine Skripte von außen, kein Tracking.
+   Eingaben bleiben im Browser und werden nirgendwo gespeichert oder gesendet. */
+:root {
+  color-scheme: light;
+  --bg: #faf8f8;
+  --card: #ffffff;
+  --line: #e5e5e5;
+  --ink: #2b2b2b;
+  --ink-2: #4e4e4e;
+  --muted: #666464;
+  --accent: #284b63;
+  --soft: rgba(143, 159, 169, 0.15);
+  --z3-1: #8cb0cb; --z3-2: #447496; --z3-3: #163c54;
+  --z5-1: #8cb0cb; --z5-2: #6492b3; --z5-3: #447496; --z5-4: #2b5775; --z5-5: #163c54;
+  --marker: #2b2b2b;
+  --help-bg: #f3f0ea;
+  --help-line: #e2dccf;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --bg: #161618; --card: #1c1c1f; --line: #393639;
+    --ink: #ebebec; --ink-2: #d4d4d4; --muted: #a3a1a3; --accent: #7b97aa;
+    --z3-1: #2c516b; --z3-2: #5889ac; --z3-3: #9ec3de;
+    --z5-1: #2c516b; --z5-2: #406d8c; --z5-3: #5889ac; --z5-4: #78a6c8; --z5-5: #9ec3de;
+    --marker: #ebebec; --help-bg: #222124; --help-line: #3a383c;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #161618; --card: #1c1c1f; --line: #393639;
+  --ink: #ebebec; --ink-2: #d4d4d4; --muted: #a3a1a3; --accent: #7b97aa;
+  --z3-1: #2c516b; --z3-2: #5889ac; --z3-3: #9ec3de;
+  --z5-1: #2c516b; --z5-2: #406d8c; --z5-3: #5889ac; --z5-4: #78a6c8; --z5-5: #9ec3de;
+  --marker: #ebebec; --help-bg: #222124; --help-line: #3a383c;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Source Sans Pro", "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 24px 16px 40px; }
+h1, h2, h3 {
+  font-family: "Schibsted Grotesk", "Source Sans Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.25; margin: 0; font-weight: 700;
+}
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.25rem; }
+h3 { font-size: 1.02rem; }
+p { margin: 0 0 .7em; }
+a { color: var(--accent); text-underline-offset: 2px; }
+.eyebrow { font-size: .82rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.lead { color: var(--ink-2); margin-top: 12px; }
+.note {
+  border-left: 3px solid var(--accent); background: var(--soft);
+  padding: 12px 14px; border-radius: 0 8px 8px 0; margin: 18px 0 8px; color: var(--ink);
+}
+.note p:last-child { margin-bottom: 0; }
+.privacy { font-size: .9rem; color: var(--muted); margin-top: 8px; }
+
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  padding: 20px 18px 18px; margin-top: 22px;
+}
+.card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.card-head .meta { font-size: .85rem; color: var(--muted); margin-top: 4px; }
+.what { margin-top: 12px; color: var(--ink-2); }
+.dir { font-size: .95rem; margin-top: 4px; }
+.dir strong { font-weight: 700; }
+
+.entry { margin-top: 18px; }
+.entry + .entry { margin-top: 26px; padding-top: 18px; border-top: 1px dashed var(--line); }
+.entry-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.entry-top label { font-weight: 700; }
+.entry-top .hint { font-size: .85rem; color: var(--muted); font-weight: 400; display: block; }
+.num {
+  width: 5.2em; font: inherit; font-size: 1.05rem; font-variant-numeric: tabular-nums;
+  padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--bg); color: var(--ink); text-align: right;
+}
+.num:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Balken mit Bereichen */
+.track-wrap { position: relative; margin-top: 12px; padding: 12px 0 4px; touch-action: none; cursor: pointer; -webkit-user-select: none; user-select: none; }
+.track { display: flex; gap: 2px; height: 14px; }
+.seg { height: 100%; }
+.seg:first-child { border-radius: 4px 0 0 4px; }
+.seg:last-child { border-radius: 0 4px 4px 0; }
+.marker {
+  position: absolute; top: 5px; width: 22px; height: 28px; margin-left: -11px;
+  display: none; pointer-events: none;
+}
+.marker::before {
+  content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 6px; margin-left: -3px;
+  background: var(--marker); border-radius: 3px; box-shadow: 0 0 0 2px var(--card);
+}
+.is-set .marker { display: block; }
+.track-wrap.focus .marker::before { box-shadow: 0 0 0 2px var(--card), 0 0 0 4px var(--accent); }
+.ends { display: flex; justify-content: space-between; font-size: .8rem; color: var(--muted); margin-top: 4px; font-variant-numeric: tabular-nums; }
+.sr { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* Legende = Tabellenansicht der Bereiche */
+.legend { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 4px; }
+.legend li {
+  display: grid; grid-template-columns: 14px 1fr auto; align-items: center; gap: 10px;
+  padding: 5px 8px; border-radius: 6px; font-size: .92rem; color: var(--ink-2);
+}
+.legend .sw { width: 14px; height: 14px; border-radius: 3px; }
+.legend .rng { color: var(--muted); font-variant-numeric: tabular-nums; }
+.legend li.active { background: var(--soft); color: var(--ink); font-weight: 700; }
+.legend li.active .rng { color: var(--ink-2); }
+
+.result { margin-top: 12px; }
+.result .empty { color: var(--muted); font-size: .95rem; }
+.result h3 { margin-bottom: 4px; }
+.step { margin-top: 10px; font-size: .95rem; padding: 10px 12px; border-radius: 8px; background: var(--soft); }
+.step b { font-weight: 700; }
+.source { font-size: .8rem; color: var(--muted); margin-top: 14px; }
+
+/* DASS: kompakte Tabelle */
+.dtable { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: .9rem; font-variant-numeric: tabular-nums; }
+.dtable th, .dtable td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+.dtable th { font-weight: 700; color: var(--ink-2); font-size: .82rem; }
+.dtable td.lvl { display: flex; align-items: center; gap: 8px; }
+.dtable .sw { width: 12px; height: 12px; border-radius: 3px; flex: none; }
+.dtable td.on { background: var(--soft); font-weight: 700; color: var(--ink); }
+
+.help {
+  background: var(--help-bg); border: 1px solid var(--help-line); border-radius: 12px;
+  padding: 16px 18px; margin-top: 12px;
+}
+.help h3 { margin-bottom: 8px; }
+.help ul { margin: 0; padding-left: 1.1em; }
+.help li { margin: 4px 0; }
+.help .small { font-size: .9rem; color: var(--ink-2); margin-top: 8px; }
+.inline-help { display: none; }
+.inline-help.show { display: block; }
+
+.actions { margin-top: 26px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+button.reset {
+  font: inherit; font-size: .95rem; padding: 8px 14px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--card); color: var(--ink);
+}
+button.reset:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+footer { margin-top: 30px; font-size: .82rem; color: var(--muted); }
+footer p { margin-bottom: .5em; }
+
+@media (max-width: 480px) {
+  body { font-size: 16px; }
+  h1 { font-size: 1.5rem; }
+  .card { padding: 16px 14px; }
+  .dtable th, .dtable td { padding: 6px 4px; }
+}
+@media (forced-colors: active) {
+  .seg { border: 1px solid CanvasText; }
+  .marker::before { background: CanvasText; }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="eyebrow">Studie PAAQ-G · Universität zu Köln</div>
+  <h1>Ihre Werte verstehen</h1>
+  <p class="lead">Am Ende der Umfrage haben Sie Ihre Punktzahlen gesehen. Tragen Sie sie hier ein oder schieben Sie den Regler. Sie sehen dann, in welchem Bereich Ihr Wert liegt und was das ungefähr bedeutet.</p>
+  <p class="lead">Sie kennen Ihre Werte nicht? Dann probieren Sie die Regler einfach aus. So sehen Sie, was die Bereiche bedeuten.</p>
+
+  <div class="note">
+    <p><strong>Bitte beachten:</strong> Das ist keine Diagnose. Fragebögen zeigen nur einen Ausschnitt, an einem bestimmten Tag. Und kein Wert sagt etwas darüber, ob Sie eine gute Mutter oder ein guter Vater sind.</p>
+  </div>
+  <p class="privacy">Ihre Eingaben bleiben auf Ihrem Gerät. Nichts wird gespeichert oder gesendet.</p>
+
+  <!-- PAAQ -->
+  <section class="card" id="card-paaq" aria-labelledby="h-paaq">
+    <div class="card-head">
+      <div>
+        <h2 id="h-paaq">Schwierige Gefühle im Familienalltag</h2>
+        <div class="meta">Fragebogen PAAQ · 15 Fragen</div>
+      </div>
+    </div>
+    <p class="what">Diese Fragen drehen sich um Momente, in denen Ihr Kind oder Sie selbst etwas Schweres fühlen: Angst, Wut, Traurigkeit. Können Sie diese Gefühle da sein lassen? Und können Sie trotzdem so handeln, wie es Ihnen wichtig ist?</p>
+    <p class="dir"><strong>Höherer Wert:</strong> Es fällt Ihnen schwerer, schwierige Gefühle auszuhalten. Sie möchten sie eher schnell wegmachen.</p>
+    <div class="entry" data-scale="paaq"></div>
+    <p class="source">Für die deutsche Fassung gibt es noch keine Vergleichswerte. Genau daran arbeiten wir gerade, mit Ihrer Hilfe. Die Bereiche richten sich deshalb nach der Antwortskala. Original: Cheron, Ehrenreich &amp; Pincus (2009).</p>
+  </section>
+
+  <!-- AAQ-II -->
+  <section class="card" id="card-aaq" aria-labelledby="h-aaq">
+    <div class="card-head">
+      <div>
+        <h2 id="h-aaq">Beweglich bleiben mit Gedanken und Gefühlen</h2>
+        <div class="meta">Fragebogen AAQ-II · 7 Fragen</div>
+      </div>
+    </div>
+    <p class="what">Diese Fragen sind allgemeiner, nicht nur zum Elternsein. Sie fragen: Wie sehr halten schmerzhafte Gedanken, Gefühle oder Erinnerungen Sie davon ab, Ihr Leben so zu leben, wie Sie möchten?</p>
+    <p class="dir"><strong>Höherer Wert:</strong> Schwierige Gedanken und Gefühle stehen Ihnen öfter im Weg.</p>
+    <div class="entry" data-scale="aaq"></div>
+    <p class="source">Zum Vergleich: In der Originalstudie hatten Erwachsene ohne psychische Erkrankung im Durchschnitt etwa 18 Punkte. Menschen in psychologischer Behandlung hatten im Durchschnitt etwa 28 Punkte (Bond et al., 2011).</p>
+  </section>
+
+  <!-- MAAS -->
+  <section class="card" id="card-maas" aria-labelledby="h-maas">
+    <div class="card-head">
+      <div>
+        <h2 id="h-maas">Aufmerksam im Moment</h2>
+        <div class="meta">Fragebogen MAAS · 15 Fragen</div>
+      </div>
+    </div>
+    <p class="what">Diese Fragen drehen sich darum, wie oft Sie Dinge „nebenbei“ tun: essen, ohne es zu schmecken; zuhören und dabei an etwas anderes denken; wie auf Autopilot.</p>
+    <p class="dir"><strong>Achtung, hier ist es umgekehrt. Höherer Wert:</strong> Sie sind im Alltag öfter mit Ihrer Aufmerksamkeit bei dem, was gerade passiert.</p>
+    <div class="entry" data-scale="maas"></div>
+    <p class="source">Der Wert ist ein Durchschnitt von 1 bis 6. Für diesen Fragebogen gibt es keine festen Grenzwerte. Die Bereiche richten sich nach der Antwortskala. Brown &amp; Ryan (2003); deutsche Fassung: Michalak et al. (2008).</p>
+  </section>
+
+  <!-- DASS-21 -->
+  <section class="card" id="card-dass" aria-labelledby="h-dass">
+    <div class="card-head">
+      <div>
+        <h2 id="h-dass">Wie es Ihnen in der letzten Woche ging</h2>
+        <div class="meta">Fragebogen DASS-21 · 3 Bereiche mit je 7 Fragen</div>
+      </div>
+    </div>
+    <p class="what">Diese Fragen beziehen sich nur auf die letzte Woche. Die Werte können sich also schnell ändern, zum Beispiel nach einer ruhigeren Zeit.</p>
+    <p class="dir"><strong>Höherer Wert:</strong> mehr Belastung in diesem Bereich.</p>
+    <div class="entry" data-scale="dep"></div>
+    <div class="entry" data-scale="anx"></div>
+    <div class="entry" data-scale="str"></div>
+    <table class="dtable" aria-label="Bereiche im Überblick: Punkte je Bereich">
+      <thead><tr><th scope="col">Bereich</th><th scope="col">Nieder&shy;geschlagen&shy;heit</th><th scope="col">Angst</th><th scope="col">Stress</th></tr></thead>
+      <tbody id="dtable-body"></tbody>
+    </table>
+    <div class="help inline-help" id="dass-help" role="note">
+      <h3>Sie müssen das nicht allein tragen</h3>
+      <p>Ihr Wert zeigt eine starke Belastung. Sprechen Sie mit jemandem darüber, zum Beispiel mit Ihrer Hausarztpraxis. Hilfe finden Sie auch unten auf dieser Seite.</p>
+    </div>
+    <p class="source">Einteilung nach den Entwicklern des Fragebogens (Lovibond &amp; Lovibond, 1995). Für die Kurzform werden die Punkte dafür verdoppelt; das rechnet diese Seite für Sie. Deutsche Fassung: Nilges &amp; Essau (2015).</p>
+  </section>
+
+  <section class="help" aria-labelledby="h-help" style="margin-top:22px">
+    <h3 id="h-help">Wenn es gerade zu viel ist</h3>
+    <ul>
+      <li><strong>Telefonseelsorge</strong>, rund um die Uhr, kostenlos und anonym: <a href="tel:08001110111">0800 111 0 111</a> oder <a href="tel:08001110222">0800 111 0 222</a>, auch online unter <a href="https://www.telefonseelsorge.de" target="_blank" rel="noopener">telefonseelsorge.de</a></li>
+      <li><strong>Elterntelefon</strong> der Nummer gegen Kummer, kostenlos und anonym: <a href="tel:08001110550">0800 111 0 550</a> (Mo–Fr 9–17 Uhr, Di und Do bis 19 Uhr)</li>
+      <li><strong>Termin für ein Gespräch bei einer Psychotherapeutin oder einem Psychotherapeuten:</strong> <a href="tel:116117">116 117</a> oder <a href="https://psychotherapiesuche.116117.de" target="_blank" rel="noopener">psychotherapiesuche.116117.de</a></li>
+    </ul>
+    <p class="small">In einer akuten Notlage: <a href="tel:112">112</a>.</p>
+  </section>
+
+  <div class="actions">
+    <button type="button" class="reset" id="reset">Alle Werte löschen</button>
+  </div>
+
+  <footer>
+    <p>Diese Seite gehört zur Studie „Übersetzung und psychometrische Evaluierung des Parental Acceptance and Action Questionnaire (PAAQ)“ der Universität zu Köln, Arbeitsbereich Psychologie und Psychotherapie in der Heilpädagogik und Rehabilitation.</p>
+    <p>Fragen? Giorgio Alagna, M.Sc., Psychotherapeut · <a href="mailto:giorgio.alagna@uni-koeln.de">giorgio.alagna@uni-koeln.de</a></p>
+  </footer>
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---------- Skalen & Bereiche ----------
+  // lo = kleinster Wert des Bereichs. Ganzzahlige Skalen: jeder Punkt bekommt gleich viel Platz.
+  var SCALES = {
+    paaq: {
+      label: "Ihr Wert", hint: "15 bis 105 Punkte", min: 15, max: 105, step: 1, int: true, ramp: 3,
+      zones: [
+        { lo: 15, name: "eher niedrig",
+          text: "Sie haben im Schnitt eher mit „selten“ oder „nie“ geantwortet. Schwierige Gefühle, Ihre eigenen und die Ihres Kindes, dürfen meistens da sein. Sie können trotzdem tun, was Ihnen wichtig ist.",
+          step: "Bleiben Sie dabei. Und erzählen Sie Ihrem Kind ruhig, wie Sie mit schweren Momenten umgehen. Kinder lernen viel durch Zuschauen." },
+        { lo: 45, name: "mittel",
+          text: "Sie haben im Schnitt zwischen „selten“ und „häufig“ geantwortet. Manchmal können Sie schwierige Gefühle da sein lassen. Manchmal möchten Sie sie schnell loswerden, für Ihr Kind oder für sich. Das ist sehr verbreitet.",
+          step: "Wenn Ihr Kind das nächste Mal weint oder wütend ist: Merken Sie zuerst, was in Ihnen passiert. Zum Beispiel: „Mir wird gerade eng.“ Das schafft schon etwas Luft." },
+        { lo: 75, name: "eher hoch",
+          text: "Sie haben im Schnitt mit „häufig“ oder öfter geantwortet. Schwierige Gefühle sind für Sie im Familienalltag oft schwer auszuhalten. Dann tun Sie eher etwas, damit sie schnell aufhören, auch wenn das auf Dauer nicht zu dem passt, was Ihnen wichtig ist. Das kostet viel Kraft.",
+          step: "Ein erster Schritt: das Gefühl Ihres Kindes stehen lassen, statt es wegzureden. „Du hast Angst. Ich glaube dir das.“ Und holen Sie sich Unterstützung, wenn es zu viel wird." }
+      ]
+    },
+    aaq: {
+      label: "Ihr Wert", hint: "7 bis 49 Punkte", min: 7, max: 49, step: 1, int: true, ramp: 3, helpFrom: 2,
+      zones: [
+        { lo: 7, name: "niedrig",
+          text: "Schwierige Gedanken und Gefühle halten Sie selten davon ab, so zu leben, wie Sie möchten. Das liegt im Bereich vieler Erwachsener.",
+          step: "Was hilft Ihnen dabei? Das kann auch für Ihr Kind wertvoll sein." },
+        { lo: 19, name: "mittel",
+          text: "Manchmal stehen Ihnen schwierige Gedanken und Gefühle im Weg. Das kennen viele Menschen, besonders in anstrengenden Zeiten.",
+          step: "Fragen Sie sich in einem schweren Moment: Was ist mir hier eigentlich wichtig? Und was wäre ein kleiner Schritt in diese Richtung?" },
+        { lo: 25, name: "erhöht",
+          text: "Schmerzhafte Gedanken und Gefühle halten Sie öfter davon ab, so zu leben, wie Sie möchten. Werte ab etwa 25 kommen häufiger vor, wenn Menschen gerade stark belastet sind. Viele Menschen haben solche Phasen.",
+          step: "Es kann sich lohnen, mit jemandem darüber zu sprechen. Kontakte finden Sie unten auf dieser Seite." }
+      ]
+    },
+    maas: {
+      label: "Ihr Wert", hint: "Durchschnitt von 1 bis 6", min: 1, max: 6, step: 0.1, int: false, ramp: 3,
+      zones: [
+        { lo: 1, name: "oft auf Autopilot",
+          text: "Ihre Aufmerksamkeit ist im Alltag oft woanders: bei Plänen, Sorgen oder dem nächsten Termin. Mit Kindern und vollen Tagen ist das gut verständlich.",
+          step: "Eine Minute am Tag: Beim Zähneputzen oder beim ersten Kaffee nur das tun. Wenn die Gedanken abschweifen, freundlich zurückkommen." },
+        { lo: 3, name: "mittel",
+          text: "Manchmal sind Sie ganz bei der Sache, manchmal läuft vieles nebenbei. So geht es vielen Menschen.",
+          step: "Wählen Sie einen festen Moment mit Ihrem Kind, zum Beispiel das Abendessen. Dort sind Sie ein paar Minuten nur zum Zuhören da." },
+        { lo: 4.5, name: "oft im Moment",
+          text: "Sie sind im Alltag oft mit Ihrer Aufmerksamkeit bei dem, was gerade passiert. Das kann helfen, auch schwierige Momente mit Ihrem Kind bewusst wahrzunehmen.",
+          step: "Nehmen Sie auch Ihre eigenen Gefühle in solchen Momenten wahr. Das gehört genauso dazu." }
+      ]
+    }
+  };
+
+  var DASS_LEVELS = ["unauffällig", "leicht erhöht", "mäßig erhöht", "stark erhöht", "sehr stark erhöht"];
+  var DASS_TEXT = [
+    "Das liegt im Bereich der meisten Menschen.",
+    "Etwas mehr als üblich. Das kann nach einer anstrengenden Woche gut vorkommen.",
+    "Deutlich spürbar. Achten Sie in den nächsten Wochen darauf, wie es Ihnen geht, und gönnen Sie sich Entlastung, wo es geht.",
+    "Das ist eine starke Belastung. Es ist sinnvoll, mit jemandem darüber zu sprechen, zum Beispiel mit Ihrer Hausarztpraxis.",
+    "Das ist eine sehr starke Belastung. Bitte holen Sie sich Unterstützung. Kontakte finden Sie unten auf dieser Seite."
+  ];
+  function dassScale(name, examples, los) {
+    return {
+      label: name, hint: "0 bis 21 Punkte · " + examples, min: 0, max: 21, step: 1, int: true, ramp: 5, helpFrom: 3, dass: true,
+      zones: los.map(function (lo, i) { return { lo: lo, name: DASS_LEVELS[i], text: DASS_TEXT[i] }; })
+    };
+  }
+  // Rohwerte der Kurzform (0–21). Grenzen = Lovibond & Lovibond (1995) nach Verdopplung.
+  SCALES.dep = dassScale("Niedergeschlagenheit", "z. B. sich zu nichts aufraffen können, keine Freude spüren", [0, 5, 7, 11, 14]);
+  SCALES.anx = dassScale("Angst", "z. B. Herzklopfen, Zittern, Angst vor Panik", [0, 4, 5, 8, 10]);
+  SCALES.str = dassScale("Stress", "z. B. schwer abschalten können, schnell gereizt sein", [0, 8, 10, 13, 17]);
+
+  // ---------- Hilfsfunktionen ----------
+  function zoneIndex(s, v) {
+    var idx = 0;
+    for (var i = 0; i < s.zones.length; i++) { if (v >= s.zones[i].lo - 1e-9) idx = i; }
+    return idx;
+  }
+  function zoneHi(s, i) {
+    if (i < s.zones.length - 1) return s.int ? s.zones[i + 1].lo - 1 : s.zones[i + 1].lo;
+    return s.max;
+  }
+  function fmt(s, v) { return s.int ? String(Math.round(v)) : v.toFixed(1).replace(".", ","); }
+  function rangeText(s, i) {
+    var lo = s.zones[i].lo, hi = zoneHi(s, i);
+    if (s.int) return lo === hi ? String(lo) : lo + "–" + hi;
+    return (i === s.zones.length - 1) ? "ab " + fmt(s, lo) : fmt(s, lo) + " bis unter " + fmt(s, hi);
+  }
+  // Position 0..1 auf dem Balken
+  function dmin(s) { return s.int ? s.min - 0.5 : s.min; }
+  function dmax(s) { return s.int ? s.max + 0.5 : s.max; }
+  function pos(s, v) { return (v - dmin(s)) / (dmax(s) - dmin(s)); }
+  function color(s, i) {
+    if (s.ramp === 3) return "var(--z3-" + (i + 1) + ")";
+    return "var(--z5-" + (i + 1) + ")";
+  }
+  function clamp(s, v) {
+    v = Math.min(s.max, Math.max(s.min, v));
+    return s.int ? Math.round(v) : Math.round(v * 10) / 10;
+  }
+  function parseNum(str) {
+    if (str == null) return NaN;
+    str = String(str).trim().replace(",", ".");
+    if (str === "") return NaN;
+    return Number(str);
+  }
+
+  var state = {};
+  var ui = {};
+
+  // ---------- Aufbau ----------
+  Object.keys(SCALES).forEach(function (key) {
+    var s = SCALES[key];
+    var host = document.querySelector('.entry[data-scale="' + key + '"]');
+    if (!host) return;
+    var id = "in-" + key;
+
+    var top = document.createElement("div");
+    top.className = "entry-top";
+    top.innerHTML = '<label for="' + id + '">' + s.label + '<span class="hint">' + s.hint + '</span></label>' +
+      '<input class="num" id="' + id + '" type="text" inputmode="decimal" autocomplete="off" placeholder="–">';
+    host.appendChild(top);
+
+    var tw = document.createElement("div");
+    tw.className = "track-wrap";
+    var track = document.createElement("div");
+    track.className = "track";
+    s.zones.forEach(function (z, i) {
+      var seg = document.createElement("div");
+      seg.className = "seg";
+      var lo = s.int ? z.lo - 0.5 : z.lo;
+      var hi = s.int ? zoneHi(s, i) + 0.5 : zoneHi(s, i);
+      seg.style.flex = String(hi - lo) + " 1 0";
+      seg.style.background = color(s, i);
+      track.appendChild(seg);
+    });
+    var marker = document.createElement("div");
+    marker.className = "marker";
+    var range = document.createElement("input");
+    range.type = "range"; range.className = "sr";
+    range.min = s.min; range.max = s.max; range.step = s.step; range.value = s.min;
+    range.setAttribute("aria-label", (s.dass ? s.label : document.getElementById("h-" + key).textContent) + " – Regler");
+    tw.appendChild(track); tw.appendChild(marker); tw.appendChild(range);
+    host.appendChild(tw);
+
+    var ends = document.createElement("div");
+    ends.className = "ends";
+    ends.innerHTML = "<span>" + fmt(s, s.min) + "</span><span>" + fmt(s, s.max) + "</span>";
+    host.appendChild(ends);
+
+    var legend = null;
+    if (!s.dass) {
+      legend = document.createElement("ul");
+      legend.className = "legend";
+      legend.setAttribute("aria-label", "Bereiche");
+      s.zones.forEach(function (z, i) {
+        var li = document.createElement("li");
+        li.innerHTML = '<span class="sw" style="background:' + color(s, i) + '"></span><span>' + z.name + '</span><span class="rng">' + rangeText(s, i) + '</span>';
+        legend.appendChild(li);
+      });
+      host.appendChild(legend);
+    }
+
+    var result = document.createElement("div");
+    result.className = "result";
+    result.setAttribute("aria-live", "polite");
+    host.appendChild(result);
+
+    ui[key] = { host: host, num: top.querySelector("input"), tw: tw, marker: marker, range: range, legend: legend, result: result };
+    state[key] = null;
+
+    // Eingabe über Zahl
+    ui[key].num.addEventListener("input", function () {
+      var v = parseNum(this.value);
+      if (isNaN(v)) { setValue(key, null, "num"); return; }
+      if (v < s.min || v > s.max) { setValue(key, null, "num"); showRangeHint(key); return; }
+      setValue(key, clamp(s, v), "num");
+    });
+    ui[key].num.addEventListener("blur", function () {
+      if (state[key] != null) this.value = fmt(s, state[key]);
+    });
+
+    // Tastatur / Screenreader über den (unsichtbaren) Regler
+    range.addEventListener("input", function () { setValue(key, clamp(s, Number(this.value)), "range"); });
+    range.addEventListener("focus", function () { tw.classList.add("focus"); });
+    range.addEventListener("blur", function () { tw.classList.remove("focus"); });
+
+    // Ziehen / Tippen auf dem Balken
+    var dragging = false;
+    function fromPointer(e) {
+      var r = track.getBoundingClientRect();
+      var t = (e.clientX - r.left) / r.width;
+      t = Math.min(1, Math.max(0, t));
+      setValue(key, clamp(s, dmin(s) + t * (dmax(s) - dmin(s))), "pointer");
+    }
+    tw.addEventListener("pointerdown", function (e) {
+      dragging = true;
+      try { tw.setPointerCapture(e.pointerId); } catch (err) {}
+      fromPointer(e);
+      range.focus({ preventScroll: true });
+      e.preventDefault();
+    });
+    tw.addEventListener("pointermove", function (e) { if (dragging) fromPointer(e); });
+    tw.addEventListener("pointerup", function () { dragging = false; });
+    tw.addEventListener("pointercancel", function () { dragging = false; });
+  });
+
+  // DASS-Tabelle
+  (function buildTable() {
+    var body = document.getElementById("dtable-body");
+    DASS_LEVELS.forEach(function (lvl, i) {
+      var tr = document.createElement("tr");
+      tr.innerHTML = '<td class="lvl"><span class="sw" style="background:var(--z5-' + (i + 1) + ')"></span>' + lvl + '</td>' +
+        '<td data-k="dep" data-i="' + i + '">' + rangeText(SCALES.dep, i) + '</td>' +
+        '<td data-k="anx" data-i="' + i + '">' + rangeText(SCALES.anx, i) + '</td>' +
+        '<td data-k="str" data-i="' + i + '">' + rangeText(SCALES.str, i) + '</td>';
+      body.appendChild(tr);
+    });
+  })();
+
+  function showRangeHint(key) {
+    var s = SCALES[key];
+    ui[key].result.innerHTML = '<p class="empty">Bitte einen Wert von ' + fmt(s, s.min) + ' bis ' + fmt(s, s.max) + ' eintragen.</p>';
+    fit();
+  }
+
+  function render(key) {
+    var s = SCALES[key], u = ui[key], v = state[key];
+    if (v == null) {
+      u.host.classList.remove("is-set");
+      u.range.removeAttribute("aria-valuetext");
+      if (u.legend) Array.prototype.forEach.call(u.legend.children, function (li) { li.classList.remove("active"); });
+      u.result.innerHTML = s.dass ? "" : '<p class="empty">Tragen Sie Ihren Wert ein oder tippen Sie auf den Balken.</p>';
+      return;
+    }
+    var i = zoneIndex(s, v), z = s.zones[i];
+    u.host.classList.add("is-set");
+    u.marker.style.left = (pos(s, v) * 100) + "%";
+    u.range.value = v;
+    u.range.setAttribute("aria-valuetext", fmt(s, v) + ", Bereich: " + z.name);
+    if (u.legend) Array.prototype.forEach.call(u.legend.children, function (li, j) { li.classList.toggle("active", j === i); });
+    if (s.dass) {
+      u.result.innerHTML = '<p><strong>' + fmt(s, v) + ' Punkte: ' + z.name + '.</strong> ' + z.text + '</p>';
+    } else {
+      u.result.innerHTML = '<h3>' + fmt(s, v) + ' · ' + z.name + '</h3><p>' + z.text + '</p>' +
+        (z.step ? '<div class="step"><b>Ein kleiner Schritt:</b> ' + z.step + '</div>' : '');
+    }
+  }
+
+  function renderDass() {
+    var cells = document.querySelectorAll("#dtable-body td[data-k]");
+    var anyHigh = false;
+    Array.prototype.forEach.call(cells, function (td) {
+      var k = td.getAttribute("data-k"), i = Number(td.getAttribute("data-i"));
+      var v = state[k];
+      var on = v != null && zoneIndex(SCALES[k], v) === i;
+      td.classList.toggle("on", on);
+      if (on && i >= SCALES[k].helpFrom) anyHigh = true;
+    });
+    document.getElementById("dass-help").classList.toggle("show", anyHigh);
+  }
+
+  function setValue(key, v, from) {
+    state[key] = v;
+    var s = SCALES[key];
+    if (from !== "num") ui[key].num.value = v == null ? "" : fmt(s, v);
+    render(key);
+    if (s.dass) renderDass();
+    fit();
+  }
+
+  // ---------- Vorbelegung über #paaq=52&aaq=21&maas=3.7&dep=5&anx=3&str=8 ----------
+  // Der Teil nach # wird nie an einen Server geschickt.
+  function readHash() {
+    var h = "";
+    try { h = window.location.hash || ""; } catch (e) {}
+    if (!h) { try { if (window.parent !== window) h = window.parent.location.hash || ""; } catch (e) {} }
+    h = h.replace(/^#/, "");
+    if (!h) return;
+    h.split("&").forEach(function (pair) {
+      var p = pair.split("="), k = decodeURIComponent(p[0] || "").toLowerCase(), v = parseNum(decodeURIComponent(p[1] || ""));
+      if (SCALES[k] && !isNaN(v) && v >= SCALES[k].min && v <= SCALES[k].max) setValue(k, clamp(SCALES[k], v), "hash");
+    });
+  }
+
+  document.getElementById("reset").addEventListener("click", function () {
+    Object.keys(SCALES).forEach(function (k) { setValue(k, null, "reset"); });
+    try { if (window.location.hash) history.replaceState(null, "", window.location.pathname + window.location.search); } catch (e) {}
+  });
+
+  // ---------- Einbettung in Quartz: Höhe & Hell/Dunkel übernehmen ----------
+  function fit() {
+    try {
+      if (window.frameElement) window.frameElement.style.height = Math.ceil(document.documentElement.scrollHeight) + "px";
+    } catch (e) {}
+  }
+  function syncTheme() {
+    try {
+      if (window.parent === window) return;
+      var t = window.parent.document.documentElement.getAttribute("saved-theme");
+      if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  }
+  try {
+    if (window.parent !== window) {
+      new MutationObserver(syncTheme).observe(window.parent.document.documentElement, { attributes: true, attributeFilter: ["saved-theme"] });
+    }
+  } catch (e) {}
+  syncTheme();
+
+  Object.keys(SCALES).forEach(function (k) { render(k); });
+  renderDass();
+  readHash();
+  window.addEventListener("hashchange", readHash);
+  window.addEventListener("resize", fit);
+  window.addEventListener("load", fit);
+  if (window.ResizeObserver) { try { new ResizeObserver(fit).observe(document.body); } catch (e) {} }
+  fit();
+})();
+</script>
+</body>
+</html>
