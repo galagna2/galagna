@@ -5,7 +5,7 @@ Titledraft: "false"
 *Die Ergebnisse der Studie zum PAAQ-G werden [[hier]] am Ende der Auswertung angezeigt.*
 
 ![[Pasted image 20260929144651.png|559]]
-**Vincent van Gogh, „Erste Schritte (nach Millet)“** (1890, Metropolitan Museum)
+Vincent van Gogh, "Erste Schritte (nach Millet)" (1890, Metropolitan Museum)
 
 Viele Eltern kennen das: Ihnen ist es wichtig, dass Ihre Lieblingsmenschen keine anstrengenden Emotionen „beherbergen“ müssen. Das Weinen des eigenen Kindes tut weh. Dass Sie es kaum aushalten, ist kein Mangel an Stärke. Es ist eher ein Zeichen dafür, dass Sie dieses Gefühl selbst kennen. Dass Sie wissen, wie schwer es ist, so etwas in sich zu tragen.
 
@@ -15,7 +15,7 @@ Es gibt einen anderen Weg: Nehmen Sie zuerst sich selbst wahr: „Mir wird gerad
 
 „Du hast Bauchweh und Angst. Ich glaube dir das.“ Und gehen Sie dann einen Schritt mit ihm bis zum Schultor, mit einer kleinen, dennoch verlässlichen Abmachung, wie der Tag ausgeht.
 
-Kinder sagen selten, sie wollen später glücklich werden oder heiter sein. Sie wollen Feuerwehrmann, Ärztin, Superheldin sein. Superhelden und Superheldinnen sind aber nicht nur mutig und stark, sie sind auch verängstigt, ratlos, manchmal verzweifelt – und tun es trotzdem.
+**Kinder sagen selten, sie wollen später glücklich werden oder heiter sein. Sie wollen Feuerwehrmann, Ärztin, Superheldin sein. Superhelden und Superheldinnen sind aber nicht nur mutig und stark, sie sind auch verängstigt, ratlos, manchmal verzweifelt – und tun es trotzdem.**
 
 Das dürfen Kinder an uns lernen: nicht, dass Angst verschwindet, sondern dass man sie mitnehmen kann.
 
