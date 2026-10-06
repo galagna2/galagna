@@ -12,6 +12,7 @@ Here you may find content mostly related to:
  Look out for my series [[Impatient Notes on Long Reads]].
 
 Here my latest posts:
+[[Parental Acceptance and Action Questionnaire]]
 [[05092026 Haiku for September]]
 
 Hope you enjoy! Please, feel free to give me some feedback :)
