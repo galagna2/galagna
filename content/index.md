@@ -8,8 +8,6 @@ Here you may find content mostly related to:
 - Acceptance- and Commitment Therapy ([[ACT]])
 - Perceived Causal Network ([[PECAN]])
 - (Pediatric) [[Psycho-Oncology]]
- 
- Look out for my series [[Impatient Notes on Long Reads]].
 
 Here my latest posts:
 [[Parental Acceptance and Action Questionnaire]]
