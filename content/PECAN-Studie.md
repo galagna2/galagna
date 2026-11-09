@@ -1,6 +1,5 @@
 ---
 title: "Studie PECAN: Informationen und Mitmachen"
-draft: false
 created: 2026-11-09
 tags:
   - PECAN
