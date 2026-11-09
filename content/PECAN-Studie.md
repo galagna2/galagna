@@ -33,6 +33,8 @@ Daraus entsteht ein persönliches Schaubild, das wir am Ende gemeinsam bespreche
 
 Wir prüfen, ob dieses Gespräch für Jugendliche verständlich und gut durchführbar ist. **Wir prüfen also das Gespräch, nicht die Teilnehmenden.** Es ist keine Therapie. Langfristig soll das Verfahren Psychotherapeut:innen helfen, die Behandlung besser auf die einzelne Person zuzuschneiden.
 
+Falls Sie diese Methode ausprobieren wollen, können Sie dies online mit diesem Tool machen: [[PECAN-CA+ACT ERWACHSENE INTERAKTIV]]
+
 ## Ablauf
 
 Ein einziger Termin von ca. 85 Minuten an der Universität zu Köln, Klosterstraße 79a, 50931 Köln (2. Etage, Raum 2.201):
